@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 25, 2021 at 03:19 PM
+-- Generation Time: Feb 25, 2021 at 03:29 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -42,16 +42,6 @@ CREATE TABLE `AMELIORATION` (
   `typeElus` varchar(5000) DEFAULT NULL,
   `reartitionElus` float DEFAULT NULL,
   `année` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ANNEE`
---
-
-CREATE TABLE `ANNEE` (
-  `année` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -933,12 +923,6 @@ ALTER TABLE `ajoute_a`
 --
 ALTER TABLE `AMELIORATION`
   ADD PRIMARY KEY (`idAmelioration`);
-
---
--- Indexes for table `ANNEE`
---
-ALTER TABLE `ANNEE`
-  ADD PRIMARY KEY (`année`);
 
 --
 -- Indexes for table `A_COMMENTE`
