@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 25, 2021 at 03:29 PM
+-- Generation Time: Mar 01, 2021 at 05:21 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `temps_parole`
+-- Database: `Temps_de_parole`
 --
 
 -- --------------------------------------------------------
@@ -38,9 +38,8 @@ CREATE TABLE `ajoute_a` (
 --
 
 CREATE TABLE `AMELIORATION` (
-  `idAmelioration` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `idAmelioration` int(11) NOT NULL,
   `amelioration_texte` varchar(5000) DEFAULT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,28 +71,28 @@ CREATE TABLE `a_propose_amelioration` (
 --
 
 CREATE TABLE `COMMENTAIRE` (
-  `idCom` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  `commentaire_texte`varchar (5000) DEFAULT NULL
+  `idCom` int(11) NOT NULL,
+  `commentaire_texte` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ELUS`
+-- Table structure for table `ELUES`
 --
 
-CREATE TABLE `ELUS` (
-  `idElus` int(11)  NOT NULL,
-  `typeElus` varchar(5000) DEFAULT NULL,
-  `reartitionElus` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+CREATE TABLE `ELUES` (
+  `idElues` int(11) NOT NULL,
+  `typeElues` varchar(5000) DEFAULT NULL,
+  `repartitionElues` float DEFAULT NULL,
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ELUS`
+-- Dumping data for table `ELUES`
 --
 
-INSERT INTO `ELUS` (`idElus`, `typeElus`, `reartitionElus`, `année`) VALUES
+INSERT INTO `ELUES` (`idElues`, `typeElues`, `repartitionElues`, `annee`) VALUES
 (1, 'Senateur', 5, 1992),
 (2, 'Senateur', 5.6, 1995),
 (3, 'Senateur', 5.9, 1998),
@@ -137,14 +136,14 @@ CREATE TABLE `Esalaire` (
   `idEcart` int(11) NOT NULL,
   `EcartPublic` float DEFAULT NULL,
   `EcartPrive` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Esalaire`
 --
 
-INSERT INTO `Esalaire` (`idEcart`, `EcartPublic`, `EcartPrive`, `année`) VALUES
+INSERT INTO `Esalaire` (`idEcart`, `EcartPublic`, `EcartPrive`, `annee`) VALUES
 (1, 21.45, 13.76, 1995),
 (2, 21.68, 14.5, 1996),
 (3, 21.1, 14.05, 1997),
@@ -181,14 +180,14 @@ CREATE TABLE `MEDIA` (
   `rnomMed` varchar(5000) DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
   `temp_parole` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `MEDIA`
 --
 
-INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `année`) VALUES
+INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `annee`) VALUES
 (1, 'radio', 'cherie fm', 0, 47.1, 2002),
 (2, 'radio', 'cherie fm', 0, 46.03, 2003),
 (3, 'radio', 'cherie fm', 0, 48.38, 2004),
@@ -890,7 +889,7 @@ INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `an
 
 CREATE TABLE `PAGE` (
   `idPage` int(11) NOT NULL,
-  `année` int(11) DEFAULT NULL
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -900,7 +899,7 @@ CREATE TABLE `PAGE` (
 --
 
 CREATE TABLE `UTILISATEUR` (
-  `idUtilisateur` int(11)  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `idUtilisateur` int(11) NOT NULL,
   `pseudo` varchar(5000) DEFAULT NULL,
   `mpd_u` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -919,7 +918,8 @@ ALTER TABLE `ajoute_a`
 --
 -- Indexes for table `AMELIORATION`
 --
-
+ALTER TABLE `AMELIORATION`
+  ADD PRIMARY KEY (`idAmelioration`);
 
 --
 -- Indexes for table `A_COMMENTE`
@@ -938,13 +938,14 @@ ALTER TABLE `a_propose_amelioration`
 --
 -- Indexes for table `COMMENTAIRE`
 --
-
+ALTER TABLE `COMMENTAIRE`
+  ADD PRIMARY KEY (`idCom`);
 
 --
--- Indexes for table `ELUS`
+-- Indexes for table `ELUES`
 --
-ALTER TABLE `ELUS`
-  ADD PRIMARY KEY (`idElus`);
+ALTER TABLE `ELUES`
+  ADD PRIMARY KEY (`idElues`);
 
 --
 -- Indexes for table `Esalaire`
@@ -967,7 +968,30 @@ ALTER TABLE `PAGE`
 --
 -- Indexes for table `UTILISATEUR`
 --
+ALTER TABLE `UTILISATEUR`
+  ADD PRIMARY KEY (`idUtilisateur`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `AMELIORATION`
+--
+ALTER TABLE `AMELIORATION`
+  MODIFY `idAmelioration` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `COMMENTAIRE`
+--
+ALTER TABLE `COMMENTAIRE`
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `UTILISATEUR`
+--
+ALTER TABLE `UTILISATEUR`
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
