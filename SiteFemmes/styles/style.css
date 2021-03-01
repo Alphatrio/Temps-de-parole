@@ -1,0 +1,29 @@
+h1{
+	
+	text-align: center;
+	color: #FFFFFF;
+}
+body{
+	background: #FFFFFF  ;
+	color: #000000;
+}
+p{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.container{
+	text-align: center;
+
+
+}
+.addtopmargin{
+	margin-top: 50px;
+
+}
+.addbottommargin{
+	margin-bottom: 50px;
+
+}
+.nomargin{
+	margin: 0px;
+}
