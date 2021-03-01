@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 25, 2021 at 03:29 PM
+-- Generation Time: Mar 01, 2021 at 05:44 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `temps_parole`
+-- Database: `Temps_de_parole`
 --
 
 -- --------------------------------------------------------
@@ -39,9 +39,7 @@ CREATE TABLE `ajoute_a` (
 
 CREATE TABLE `AMELIORATION` (
   `idAmelioration` int(11) NOT NULL,
-  `typeElus` varchar(5000) DEFAULT NULL,
-  `reartitionElus` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+  `amelioration_texte` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -74,60 +72,59 @@ CREATE TABLE `a_propose_amelioration` (
 
 CREATE TABLE `COMMENTAIRE` (
   `idCom` int(11) NOT NULL,
-  `anne` int(11) DEFAULT NULL,
-  `idPage` int(11) DEFAULT NULL
+  `commentaire_texte` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ELUS`
+-- Table structure for table `ELUES`
 --
 
-CREATE TABLE `ELUS` (
-  `idElus` int(11) NOT NULL,
-  `typeElus` varchar(5000) DEFAULT NULL,
-  `reartitionElus` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+CREATE TABLE `ELUES` (
+  `idElues` int(11) NOT NULL,
+  `typeElues` varchar(5000) DEFAULT NULL,
+  `repartitionElues` float DEFAULT NULL,
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ELUS`
+-- Dumping data for table `ELUES`
 --
 
-INSERT INTO `ELUS` (`idElus`, `typeElus`, `reartitionElus`, `année`) VALUES
-(1, 'Senateur', 5, 1992),
-(2, 'Senateur', 5.6, 1995),
-(3, 'Senateur', 5.9, 1998),
-(4, 'Senateur', 10.9, 2001),
-(5, 'Senateur', 16.9, 2004),
-(6, 'Senateur', 21.9, 2008),
-(7, 'Senateur', 22.1, 2011),
-(8, 'Senateur', 25, 2014),
+INSERT INTO `ELUES` (`idElues`, `typeElues`, `repartitionElues`, `annee`) VALUES
+(1, 'Sénateurs', 5, 1992),
+(2, 'Sénateurs', 5.6, 1995),
+(3, 'Sénateurs', 5.9, 1998),
+(4, 'Sénateurs', 10.9, 2001),
+(5, 'Sénateurs', 16.9, 2004),
+(6, 'Sénateurs', 21.9, 2008),
+(7, 'Sénateurs', 22.1, 2011),
+(8, 'Sénateurs', 25, 2014),
 (9, 'Senateur', 32.1, 2017),
-(10, 'Deputes', 6, 1993),
-(11, 'Deputes', 11, 1997),
-(12, 'Deputes', 12.3, 2002),
-(13, 'Deputes', 18.5, 2007),
-(14, 'Deputes', 26.9, 2012),
+(10, 'Deputés', 6, 1993),
+(11, 'Députés', 11, 1997),
+(12, 'Députés', 12.3, 2002),
+(13, 'Députés', 18.5, 2007),
+(14, 'Députés', 26.9, 2012),
 (15, 'Deputes', 38.8, 2017),
-(16, 'Conseiller regionnaux', 12, 1992),
-(17, 'Conseiller regionnaux', 27.1, 1998),
-(18, 'Conseiller regionnaux', 47.6, 2004),
-(19, 'Conseiller regionnaux', 48, 2010),
-(20, 'Conseiller regionnaux', 47.8, 2015),
-(21, 'Conseiller departementaux', 5.6, 1992),
-(22, 'Conseiller departementaux', 5.4, 1994),
-(23, 'Conseiller departementaux', 8.6, 1998),
-(24, 'Conseiller departementaux', 9.8, 2001),
-(25, 'Conseiller departementaux', 10.9, 2004),
-(26, 'Conseiller departementaux', 13.1, 2008),
-(27, 'Conseiller departementaux', 13.8, 2011),
-(28, 'Conseiller departementaux', 50, 2015),
-(29, 'Conseillier municipaux', 21.7, 1995),
-(30, 'Conseillier municipaux', 33, 2001),
-(31, 'Conseillier municipaux', 36, 2008),
-(32, 'Conseillier municipaux', 40.3, 2014);
+(16, 'Conseillers régionaux', 12, 1992),
+(17, 'Conseillers régionaux', 27.1, 1998),
+(18, 'Conseillers régionaux', 47.6, 2004),
+(19, 'Conseillers régionaux', 48, 2010),
+(20, 'Conseillers régionaux', 47.8, 2015),
+(21, 'Conseillers départementaux', 5.6, 1992),
+(22, 'Conseillers departementaux', 5.4, 1994),
+(23, 'Conseillers départementaux', 8.6, 1998),
+(24, 'Conseillers départementaux', 9.8, 2001),
+(25, 'Conseillers départementaux', 10.9, 2004),
+(26, 'Conseillers départementaux', 13.1, 2008),
+(27, 'Conseillers départementaux', 13.8, 2011),
+(28, 'Conseillers départementaux', 50, 2015),
+(29, 'Conseillers municipaux', 21.7, 1995),
+(30, 'Conseillers municipaux', 33, 2001),
+(31, 'Conseillers municipaux', 36, 2008),
+(32, 'Conseillers municipaux', 40.3, 2014);
 
 -- --------------------------------------------------------
 
@@ -139,14 +136,14 @@ CREATE TABLE `Esalaire` (
   `idEcart` int(11) NOT NULL,
   `EcartPublic` float DEFAULT NULL,
   `EcartPrive` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Esalaire`
 --
 
-INSERT INTO `Esalaire` (`idEcart`, `EcartPublic`, `EcartPrive`, `année`) VALUES
+INSERT INTO `Esalaire` (`idEcart`, `EcartPublic`, `EcartPrive`, `annee`) VALUES
 (1, 21.45, 13.76, 1995),
 (2, 21.68, 14.5, 1996),
 (3, 21.1, 14.05, 1997),
@@ -183,14 +180,14 @@ CREATE TABLE `MEDIA` (
   `rnomMed` varchar(5000) DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
   `temp_parole` float DEFAULT NULL,
-  `année` int(11) DEFAULT NULL
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `MEDIA`
 --
 
-INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `année`) VALUES
+INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `annee`) VALUES
 (1, 'radio', 'cherie fm', 0, 47.1, 2002),
 (2, 'radio', 'cherie fm', 0, 46.03, 2003),
 (3, 'radio', 'cherie fm', 0, 48.38, 2004),
@@ -892,7 +889,7 @@ INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `an
 
 CREATE TABLE `PAGE` (
   `idPage` int(11) NOT NULL,
-  `année` int(11) DEFAULT NULL
+  `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -945,10 +942,10 @@ ALTER TABLE `COMMENTAIRE`
   ADD PRIMARY KEY (`idCom`);
 
 --
--- Indexes for table `ELUS`
+-- Indexes for table `ELUES`
 --
-ALTER TABLE `ELUS`
-  ADD PRIMARY KEY (`idElus`);
+ALTER TABLE `ELUES`
+  ADD PRIMARY KEY (`idElues`);
 
 --
 -- Indexes for table `Esalaire`
@@ -973,6 +970,28 @@ ALTER TABLE `PAGE`
 --
 ALTER TABLE `UTILISATEUR`
   ADD PRIMARY KEY (`idUtilisateur`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `AMELIORATION`
+--
+ALTER TABLE `AMELIORATION`
+  MODIFY `idAmelioration` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `COMMENTAIRE`
+--
+ALTER TABLE `COMMENTAIRE`
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `UTILISATEUR`
+--
+ALTER TABLE `UTILISATEUR`
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
