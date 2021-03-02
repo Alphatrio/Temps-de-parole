@@ -14,25 +14,12 @@
 		<form action="registration.php" method="post" autocomplete="off">
 			<div class="form-row">
 				<div class="col">
-
-             <?php if (isset($_POST["pseudo"])){
-                    echo '<input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="'.$_POST['pseudo'].'"/>';
-                  }
-                  else{
-                    echo '<input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value=""/>';
-                  }
-              ?>
+          <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value=""/>
 				</div>
 			</div>
       <div class="form-row">
         <div class="col">
-          <?php if (isset($_POST["mail"])){
-                 echo '<input type="text" name="mail" class="form-control" placeholder="Adresse e-mail" value="'.$_POST['mail'].'"/>';
-               }
-                else{
-                 echo '<input type="text" name="mail" class="form-control" placeholder="Adresse e-mail" value=""/>';
-               }
-           ?>
+          <input type="text" name="mail" class="form-control" placeholder="Adresse e-mail" value=""/>
         </div>
       </div>
 			<div class="form-row">
