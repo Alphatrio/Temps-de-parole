@@ -12,9 +12,9 @@
 
 <body>
 	<?php require_once "./header.php";?>
-
-  <table>
-    <thead>
+  <div class ="container addalinea">
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action active">
       <tr>
         <?php
           $bdd = getBD_TDP();
@@ -25,19 +25,19 @@
           $rep ->closeCursor();
         ?>
       </tr>
-    </thead>
+    </div>
           <?php
             $bdd = getBD_TDP();
             $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "tv" ORDER BY rnomMed ASC/* formulaire */');
             while ($ligne = $rep ->fetch()) {
               echo '<tr>';
-              echo '<td>'.$ligne['rnomMed'].' </td>';
+              echo '<a href="#" class="list-group-item list-group-item-action">'.$ligne['rnomMed'].'</a>';
               echo '</tr>';
             }
             $rep ->closeCursor();
           ?>
-    </table>
-
+    </div>
+    </div>
 
 	<?php require_once "./footer.php";?>
 

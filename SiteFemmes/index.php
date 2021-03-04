@@ -17,25 +17,26 @@
 <body>
 	<?php require_once "./header.php";?>
 
-	<div class= "container-fluid">
+	<div class= "container addalinea">
 
-    <table>
-      <thead>
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action active">
         <tr>
-          <th>Années</th>
+          <div class="list-group-item list-group-item-action active disabled">Années</div>
         </tr>
-      </thead>
+    </div>
             <?php
               $bdd = getBD_TDP();
               $rep = $bdd->query('SELECT annee FROM Esalaire ORDER BY annee ASC');
               while ($ligne = $rep ->fetch()) {
                 echo '<tr>';
-                echo '<td><a href="year.php?annee='.$ligne['annee'].'">'.$ligne['annee'].'</a></td>';
+
+                echo '<a class="list-group-item list-group-item-action" href="year.php?annee='.$ligne['annee'].'">'.$ligne['annee'].'</a>';   
                 echo '</tr>';
               }
               $rep ->closeCursor();
             ?>
-      </table>
+      </div>
 
 
 
@@ -46,17 +47,7 @@
 
 
 
-
-
-
-
-
-
-
 	<?php require_once "./scriptsjs.php";?>
-
-
-
 
 
 
