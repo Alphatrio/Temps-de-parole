@@ -30,6 +30,7 @@
               $rep = $bdd->query('SELECT annee FROM Esalaire ORDER BY annee ASC');
               while ($ligne = $rep ->fetch()) {
                 echo '<tr>';
+
                 echo '<a class="list-group-item list-group-item-action" href="year.php?annee='.$ligne['annee'].'">'.$ligne['annee'].'</a>';   
                 echo '</tr>';
               }
@@ -47,9 +48,6 @@
 
 
 	<?php require_once "./scriptsjs.php";?>
-
-
-
 
 
 
