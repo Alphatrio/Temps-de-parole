@@ -46,7 +46,7 @@
 
           <!-- TABLEAU ECART SALARIAL PAR ANNEE  -->
           <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead bg-danger">
               <tr>
                 <th scope="col">Écart salarial dans le privé</th>
                 <th scope="col">Écart salarial dans le public</th>

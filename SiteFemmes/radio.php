@@ -12,53 +12,34 @@
 <body>
 	<?php require_once "./header.php";?>
 
-  <table>
-    <thead>
-      <tr>
-        <?php
-          $bdd = getBD_TDP();
-          $rep = $bdd->query('SELECT  COUNT(DISTINCT rnomMed) FROM MEDIA WHERE MEDIA.typeMed = "radio"');
-          $count = $rep ->fetch();
-          // var_dump($count);
-            echo '<th>Radios ('.$count[0].')</th>';
-          $rep ->closeCursor();
-        ?>
-      </tr>
-    </thead>
+  <!-- <div class="container"> -->
+    <div class="list-group text-center">
+      <div class="list-group-item list-group-item-action active bg-info border-0 rounded-0">
+        <tr>
           <?php
             $bdd = getBD_TDP();
-            $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "radio" ORDER BY rnomMed ASC/* formulaire */');
-            while ($ligne = $rep ->fetch()) {
-              echo '<tr>';
-              echo '<td>'.$ligne['rnomMed'].' </td>';
-              echo '</tr>';
-            }
+            $rep = $bdd->query('SELECT  COUNT(DISTINCT rnomMed) FROM MEDIA WHERE MEDIA.typeMed = "radio"');
+            $count = $rep ->fetch();
+            // var_dump($count);
+              echo '<div class="list-group-item list-group-item-action active disabled bg-info border-0">Radios ('.$count[0].')</div>';
             $rep ->closeCursor();
           ?>
-    </table><br>
+        </tr>
+      </div>
+            <?php
+              $bdd = getBD_TDP();
+              $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "radio" ORDER BY rnomMed ASC/* formulaire */');
+              while ($ligne = $rep ->fetch()) {
+                echo '<tr>';
+                echo '<a class="list-group-item list-group-item-action" href="year.php?annee=">'.$ligne['rnomMed'].' </a>';
+                echo '</tr>';
+              }
+              $rep ->closeCursor();
+            ?>
+      </div><br>
+  <!-- </div> -->
 
 	<?php require_once "./footer.php";?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

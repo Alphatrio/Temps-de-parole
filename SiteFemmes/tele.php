@@ -12,16 +12,16 @@
 
 <body>
 	<?php require_once "./header.php";?>
-  <div class ="container addalinea">
-  <div class="list-group">
-    <div class="list-group-item list-group-item-action active">
+  <!-- <div class ="container addalinea"> -->
+  <div class="list-group text-center">
+    <div class="list-group-item list-group-item-action active bg-info border-0 rounded-0">
       <tr>
         <?php
           $bdd = getBD_TDP();
           $rep = $bdd->query('SELECT  COUNT(DISTINCT rnomMed) FROM MEDIA WHERE MEDIA.typeMed = "tv"');
           $count = $rep ->fetch();
           // var_dump($count);
-            echo '<th>TVs ('.$count[0].')</th>';
+            echo '<div class="list-group-item list-group-item-action active disabled bg-info border-0">TVs ('.$count[0].')</div>';
           $rep ->closeCursor();
         ?>
       </tr>
@@ -36,37 +36,13 @@
             }
             $rep ->closeCursor();
           ?>
-    </div>
-    </div>
+    </div><br>
+  <!-- </div> -->
 
 	<?php require_once "./footer.php";?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <?php require_once "./scriptsjs.php";?>
 </body>
+
 </html>
