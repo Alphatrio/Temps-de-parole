@@ -1,0 +1,112 @@
+h1{
+	
+	text-align: center;
+	color: #000000;
+}
+body{
+	background: #FFFFFF  ;
+	color: #000000;
+	font-size: 100%;
+}
+p{
+	margin-left: 10px;
+	margin-right: 10px;	
+}
+.container{
+	text-align: center;
+
+
+}
+.rounded-0-jumbotron{
+	margin-bottom:0px; 
+	background: linear-gradient(to bottom right, #7863c0,90%,#363763)
+}
+.addtopmargin{
+	margin-top: 50px;
+
+}
+.addbottommargin{
+	margin-bottom: 50px;
+
+}
+.nomargin{
+	margin: 0px;
+}
+.ourcolor{
+	background: #363763;
+	border: 0px;
+}
+th{
+	color:white;
+}
+/** Modified Responsive CSS **/
+
+@media (max-width: 200px) {
+    .btn-navbar {
+        display: block;
+    }
+    .navbar .nav-collapse {
+        clear: left;
+    }
+
+    .nav-collapse {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .navbar .nav {
+        float: none;
+        margin: 0 0 9px;
+    }
+
+    .navbar .brand {
+        margin: 0 0 0 -5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .navbar .dropdown-menu:before, .navbar .dropdown-menu:after {
+        display: none;
+    }
+
+    .navbar .nav > li > a, .navbar .dropdown-menu a {
+        border-radius: 3px 3px 3px 3px;
+        color: #999999;
+        font-weight: bold;
+        padding: 6px 15px;
+    }
+
+    .navbar .nav > li {
+        float: none;
+    }
+
+    .navbar .dropdown-menu {
+        background-color: transparent;
+        border: medium none;
+        border-radius: 0 0 0 0;
+        box-shadow: none;
+        display: block;
+        float: none;
+        left: auto;
+        margin: 0 15px;
+        max-width: none;
+        padding: 0;
+        position: static;
+        top: auto;
+    }
+
+    .navbar-form, .navbar-search {
+        border-bottom: 1px solid #222222;
+        border-top: 1px solid #222222;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
+        float: none;
+        margin: 9px 0;
+        padding: 9px 15px;
+    }
+
+    .navbar .nav.pull-right {
+        float: none;
+        margin-left: 0;
+    }
+
+}
