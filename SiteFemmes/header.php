@@ -1,16 +1,18 @@
-<div class=" rounded-0 jumbotron" style ="margin-bottom:0px; background: linear-gradient(to bottom right, #5b5ea6,50%,#363763) ">
-		<div class = "container-fluid center">
-			<h1 class="text-center">Les Femmes à la TV et à la Radio</h1>
+<div class=" rounded-0 jumbotron text-dark" style="margin-bottom:0px">
+		<div class = "container-fluid border-bottom-0">
+			<h1 class="text-center display-4">Les Femmes à la TV et à la Radio</h1>
 		</div>
 </div>
 	
 	
 	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark">
-			<a class="navbar-brand" href="#top"><?php
-					$link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-					//echo $link;
-					echo substr($link,28,-4);
+			<a class="navbar-brand" href="#top">
+				<?php
+					// $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+					// //echo $link;
+					// echo substr($link,28,-4);
 				?>
+				Navigation
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
