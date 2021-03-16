@@ -25,7 +25,7 @@
           </thead>
                 <?php
                   $bdd = getBD_TDP();
-                  $annee=$_GET['annee'];
+                  $annee = $_GET['annee'];
                   $rep = $bdd->query('SELECT typeElues, repartitionElues FROM ELUES WHERE ELUES.annee =' .$annee /* formulaire */);
                   $percentage = 100;
                   while ($ligne = $rep ->fetch()) {
@@ -68,7 +68,7 @@
 
 
 
-          
+
     <?php require_once "./footer.php";?>
 
 
