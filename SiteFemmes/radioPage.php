@@ -44,6 +44,8 @@
       //tableau avec temps de parole femmes/hommes selon l'année choisie
 
       else {
+        $anneeRadio = $_POST['anneeRadio'];
+        echo '<p class="anneeMediaChoisi">'.$anneeRadio.'</p>';
         echo '<table class="table">';
         echo '<thead class="thead-dark">';
         echo '  <tr>';
@@ -53,7 +55,6 @@
         echo '</thead>';
 
         $bdd = getBD_TDP();
-        $anneeRadio = $_POST['anneeRadio'];
         $rep = $bdd->query('SELECT temp_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" AND MEDIA.annee = "'.$anneeRadio.'"');
         $tps_parole = $rep ->fetch();
         $percentage = 100;
