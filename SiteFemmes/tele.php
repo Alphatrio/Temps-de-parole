@@ -4,7 +4,7 @@
 <head>
   <?php require 'call_bd.php' ;?>
   <meta charset="utf-8">
-  <title>TVs</title>
+  <title>Les Femmes à la TV et à la Radio</title>
   <?php require_once "./appelstyles.php";?>
 
 
@@ -26,16 +26,16 @@
         ?>
       </tr>
     </div>
-        <?php
-          $bdd = getBD_TDP();
-          $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "tv" ORDER BY rnomMed ASC/* formulaire */');
-          while ($ligne = $rep ->fetch()) {
-            echo '<tr>';
-            echo '<a class="list-group-item list-group-item-action" href="radioPage.php?rnomMed='.$ligne['rnomMed'].'">'.$ligne['rnomMed'].' </a>';
-            echo '</tr>';
-          }
-          $rep ->closeCursor();
-        ?>
+          <?php
+            $bdd = getBD_TDP();
+            $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "tv" ORDER BY rnomMed ASC/* formulaire */');
+            while ($ligne = $rep ->fetch()) {
+              echo '<tr>';
+              echo '<a href="#" class="list-group-item list-group-item-action">'.$ligne['rnomMed'].'</a>';
+              echo '</tr>';
+            }
+            $rep ->closeCursor();
+          ?>
     </div><br>
   <!-- </div> -->
 
