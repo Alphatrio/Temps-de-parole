@@ -13,13 +13,13 @@
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" href="index.php">Home <span class="sr-only"></span></a>
+						<a class="nav-link active" href="index.php">Home  <i class="fas fa-calendar-alt"></i><span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="radio.php">Radio</a>
+						<a class="nav-link" href="radio.php">Radio  <i class="fas fa-broadcast-tower"></i></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="tele.php">Télévision</a>
+						<a class="nav-link" href="tele.php">Télévision <i class="fas fa-tv"></i></a>
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">

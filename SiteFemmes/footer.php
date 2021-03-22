@@ -33,9 +33,12 @@
 		</section>
 
 		<section>
-			<a class="btn btn-outline-light btn-floating m-1" href="login.php" role="button"
-			><i class="fa fa-sign-in"></i
-		  >   Se connecter</a>
+			<?php
+				if(empty($_SESSION['client'])){
+					echo '<a class="btn btn-outline-light btn-floating m-1" href="login.php" role="button">';
+					echo '<i class="fa fa-sign-in"></i>   Connexion</a>';
+				}
+			?>
 
 
 		</section>
@@ -43,36 +46,40 @@
 		<!-- Section: Social media -->
 
 		<!-- Section: Form -->
-		<section class="">
-		  <form action="register.php">
-			<!--Grid row-->
-			<div class="row d-flex justify-content-center">
+		<?php
+			if(empty($_SESSION['client'])){
+				echo '<section class="">
+				<form action="register.php">
+					<!--Grid row-->
+					<div class="row d-flex justify-content-center">
 
-			  <!--Grid column-->
-			  <div class="col-md-0 col-12">
-				<!-- Email input -->
+					<!--Grid column-->
+					<div class="col-md-0 col-12">
+						<!-- Email input -->
 
-			  </div>
-			  <!--Grid column-->
+					</div>
+					<!--Grid column-->
 
-			  <!--Grid column-->
-			  <div class="col-auto">
-				<!-- Submit button -->
-				<button type="submit" class="btn btn-secondary mb-4">
-				  S'inscrire
-				</button>
-			  </div>
-			  <!--Grid column-->
-			</div>
-			<!--Grid row-->
-		  </form>
-		</section>
-		<!-- Section: Form -->
+					<!--Grid column-->
+					<div class="col-auto">
+						<!-- Submit button -->
+						<button type="submit" class="btn btn-secondary mb-4">
+						Inscription
+						</button>
+					</div>
+					<!--Grid column-->
+					</div>
+					<!--Grid row-->
+				</form>
+				</section>
+				<!-- Section: Form -->';
+			}
+		?>
 
 		<!-- Section: Text -->
 		<section>
 		  <p>
-			<I>Le but de ce site est informatif, les données viennent d'<a href="https://www.data.gouv.fr/en/datasets/temps-de-parole-des-hommes-et-des-femmes-a-la-television-et-a-la-radio/#_">ici</a>, son traitement et sa mise en forme ont étés faits dans le contexte universitaire.</I>
+			<I>Le but de ce site est informatif, les données viennent d'<a href="https://www.data.gouv.fr/en/datasets/temps-de-parole-des-hommes-et-des-femmes-a-la-television-et-a-la-radio/#_">ici</a>, son traitement et sa mise en forme ont étés faits dans le contexte universitaire à l'aide d'outils vus pendant le semsetre 6 <i class="fab fa-html5"></i>  <i class="fab fa-php"></i>  <i class="fas fa-database"></i>   et externes  <i class="fab fa-bootstrap">  <i class="fab fa-js-square"></i></i></I>
 		  </p>
 		</section>
 
