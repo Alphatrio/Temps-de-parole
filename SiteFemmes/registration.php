@@ -19,8 +19,8 @@
       }
       else {
         enregistrer($_POST['pseudo'],$_POST['mdp1'],$_POST['mail']);
-        echo '<meta http-equiv="refresh" content="5;URL=index.php"/>';
-        echo 'Inscription réussie !';
+        echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
+        
       }
     ?>
     <title>Registration</title>

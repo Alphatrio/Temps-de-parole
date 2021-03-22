@@ -11,15 +11,21 @@
 	<?php require_once "./header.php";?>
 
 	<div class="container addtopmargin addbottommargin">
-		<form>
+		<form action="login2.php" method="post" autocomplete="off">
 			<div class="form-row">
 				<div class="col">
-					<input type="text" class="form-control" placeholder="Identifiant">
+					 <?php if (isset($_POST["id"])){
+                  echo '<input type="text" class="form-control name="id" placeholder="Identifiant" value="'.$_POST['id'].'"/>';
+                }
+                  else{
+                  echo '<input type="text" class="form-control" name="id" placeholder="Identifiant" value="">';
+                }
+                ?>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col">
-					<input type="text" class="form-control" placeholder="Mot de passe">
+					<input type="text" name="mdp" class="form-control" placeholder="Mot de passe" value="">
 				</div>
 			</div>	
 			<div class="form-row">
