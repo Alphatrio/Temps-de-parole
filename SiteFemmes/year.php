@@ -1,4 +1,4 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
 
@@ -40,7 +40,9 @@
                   $annee=$_GET['annee'];
                   $rep = $bdd->query('SELECT typeElues, repartitionElues FROM ELUES WHERE ELUES.annee =' .$annee /* formulaire */);
                   $percentage = 100;
+                  $isempty = TRUE;
                   while ($ligne = $rep ->fetch()) {
+                    $isempty = TRUE;
                     echo '<tr>';
                     // if ($rep == "") {
                     //   $message == "Désolé, il n'existe pas de données pour cette année et/ou catégorie";
@@ -51,7 +53,12 @@
                     echo '<td>'.$ligne['repartitionElues'].' %</td>';
                     echo '<td>'.($percentage - $ligne['repartitionElues']).' %</td>';
                     echo '</tr>';
+                    if($isempty){
+                      echo "Désolé, il n'existe pas de données pour cette année et/ou catégorie";
+                    }
                   }
+                  
+                
 
 
 
@@ -70,7 +77,12 @@
 
 
                   ?>
-                <?php   echo '<div> <img src=graphAnnee.php?annee='.$annee.' </div>';?>
+                <?php
+                  echo '<div> <img src=graphAnnee.php?annee='.$annee.' </div>';
+                    
+                
+                ?>
+
 
 
 
@@ -81,7 +93,7 @@
 
           <!-- TABLEAU ECART SALARIAL PAR ANNEE  -->
           <table class="table">
-            <thead class="thead bg-danger">
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">Écart salarial dans le privé</th>
                 <th scope="col">Écart salarial dans le public</th>

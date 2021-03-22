@@ -5,7 +5,7 @@
 
 
 	<!-- Fixed Footer  -->
-	<footer class="bg-dark text-center text-white">
+	<footer class="bg-dark text-center text-white myfooter">
 	  <!-- Grid container -->
 	  <div class="container p-4">
 		<!-- Section: Social media -->

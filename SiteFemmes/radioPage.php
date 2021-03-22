@@ -14,58 +14,68 @@
 
 
     <h2 class="display-4 text-center"><?php echo $radio; ?></h2>
-    <div class="container text-center addalinea">
+    <div class = "maindiv">
+      <div class="container text-center addalinea">
 
-      <!-- selection de l'année -->
+        <!-- selection de l'année -->
 
-      <?php
+        <?php
 
-      if(!isset($_POST['submit'])) {
-        echo '<form method="post" autocomplete="off">';
-        echo '<label>Choisissez une année :</label><br>';
+        if(!isset($_POST['submit'])) {
+          echo '<form method="post" autocomplete="off">';
+          echo '<label>Choisissez une année :</label><br>';
 
-        $bdd = getBD_TDP();
-        $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'"');
-        $nbAnnee = $rep ->fetch();
-        echo '<select class="selectRadioTV" name="anneeRadio" size="'.$nbAnnee.'">';
-        $rep ->closeCursor();
+          $bdd = getBD_TDP();
+          $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'"');
+          $nbAnnee = $rep ->fetch();
+          echo '<select class="selectRadioTV" name="anneeRadio" size="'.$nbAnnee.'">';
+          $rep ->closeCursor();
 
-        $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" ORDER BY annee ASC');
-        while ($ligne = $rep ->fetch()) {
-          echo '<option>'.$ligne['annee'].'</option>';
+          $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" ORDER BY annee ASC');
+          while ($ligne = $rep ->fetch()) {
+            echo '<option>'.$ligne['annee'].'</option>';
+          }
+          $rep ->closeCursor();
+
+          echo '</select><br><br>';
+          echo '<input class="btn btn-dark" type="submit" name="submit" value="Valider">';
+          echo '</form>';
         }
-        $rep ->closeCursor();
 
-        echo '</select><br><br>';
-        echo '<input class="submit" type="submit" name="submit" value="Valider">';
-        echo '</form>';
+        //tableau avec temps de parole femmes/hommes selon l'année choisie
+
+        else {
+          $anneeRadio = $_POST['anneeRadio'];
+          echo '<p class="anneeMediaChoisi">'.$anneeRadio.'</p>';
+          echo '<table class="table">';
+          echo '<thead class="thead-dark">';
+          echo '  <tr>';
+          echo '    <th scope="col">Temps de parole : femmes</th>';
+          echo '    <th scope="col">Temps de parole : hommes</th>';
+          echo '  </tr>';
+          echo '</thead>';
+
+          $bdd = getBD_TDP();
+          $rep = $bdd->query('SELECT temp_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" AND MEDIA.annee = "'.$anneeRadio.'"');
+          $tps_parole = $rep ->fetch();
+          $percentage = 100;
+            echo '<tr>';
+            echo '<td>'.$tps_parole['temp_parole'].' %</td>';
+            echo '<td>'.($percentage - $tps_parole['temp_parole']).' %</td>';
+            echo '</tr>';
+            echo '</table><br>';
+          $rep ->closeCursor();
       }
+      ?>
+      </div>
+    </div>
+    <br> <br>
+    <?php require_once "./footer.php";?>
 
-      //tableau avec temps de parole femmes/hommes selon l'année choisie
 
-      else {
-        $anneeRadio = $_POST['anneeRadio'];
-        echo '<p class="anneeMediaChoisi">'.$anneeRadio.'</p>';
-        echo '<table class="table">';
-        echo '<thead class="thead-dark">';
-        echo '  <tr>';
-        echo '    <th scope="col">Temps de parole : femmes</th>';
-        echo '    <th scope="col">Temps de parole : hommes</th>';
-        echo '  </tr>';
-        echo '</thead>';
 
-        $bdd = getBD_TDP();
-        $rep = $bdd->query('SELECT temp_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" AND MEDIA.annee = "'.$anneeRadio.'"');
-        $tps_parole = $rep ->fetch();
-        $percentage = 100;
-          echo '<tr>';
-          echo '<td>'.$tps_parole['temp_parole'].' %</td>';
-          echo '<td>'.($percentage - $tps_parole['temp_parole']).' %</td>';
-          echo '</tr>';
-          echo '</table><br>';
-        $rep ->closeCursor();
-    }
-    ?>
+
+     <?php require_once "./scriptsjs.php";?>
 
 
 
