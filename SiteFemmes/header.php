@@ -23,12 +23,27 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link " href="register.php" role="button"><i class="fa fa-sign-in"></i>      S'inscrire</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="login.php" role="button"><i class="fa fa-sign-in"></i>      Se connecter</a>
-					</li>
+					<?php
+						if(empty($_SESSION['client'])){
+							echo '<li class="nav-item">';
+							echo	'<a class="nav-link " href="register.php" role="button"><i class="fa fa-sign-in"></i>      Inscription</a>';
+							echo '</li>';
+							echo '<li class="nav-item">';
+							echo	'<a class="nav-link" href="login.php" role="button"><i class="fa fa-sign-in"></i>      Connexion</a>';
+							echo '</li>';
+						}
+						else{
+							echo '<li class="nav-item">';
+							echo	'<a class= "nav-link" href="#" role="button"><i class="fa fa-user"></i>      '.$_SESSION['client']['pseudo'].'</a>';
+							echo '</li>';
+							echo '<li class="nav-item">';
+							echo	'<a class="nav-link " href="deconnexion.php" role="button"><i class="fa fa-sign-out"></i>      Déconnexion</a>';
+							echo '</li>';
+							echo '<li class="nav-item">';
+							echo	'<a class="nav-link " href="amelioration.php" role="button"><i class="fa fa-wrench"></i></a>';
+							echo '</li>';
+						}
+					?>
 				</ul>
 				</div>
 			</div>
