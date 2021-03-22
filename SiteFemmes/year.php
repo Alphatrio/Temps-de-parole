@@ -1,6 +1,8 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="fr">
   <head>
+
+
     <?php require 'call_bd.php';?>
     <meta charset="utf-8">
     <title>Année</title>
@@ -8,7 +10,12 @@
   </head>
 
     <body>
+
+
     <?php require_once "./header.php";?>
+
+
+
 
 
 
@@ -23,7 +30,12 @@
               <th scope="col">% hommes</th>
             </tr>
           </thead>
+
                 <?php
+
+
+
+
                   $bdd = getBD_TDP();
                   $annee=$_GET['annee'];
                   $rep = $bdd->query('SELECT typeElues, repartitionElues FROM ELUES WHERE ELUES.annee =' .$annee /* formulaire */);
@@ -40,8 +52,31 @@
                     echo '<td>'.($percentage - $ligne['repartitionElues']).' %</td>';
                     echo '</tr>';
                   }
-                  $rep ->closeCursor();
-                ?>
+
+
+
+
+
+                  // $donnees = array();
+                  // $chaine=array();
+                  // $graphique = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee =' .$annee /* formulaire */);
+                  // $i=0;
+                  // while ($ligne = $graphique ->fetch()) {
+                  //   $donnees['$i']=$ligne['temp_parole'];
+                  //
+                  //   $i+=1;
+                  // }
+
+
+
+                  ?>
+                <?php   echo '<div> <img src=graphAnnee.php?annee='.$annee.' </div>';?>
+
+
+
+
+
+
           </table><br>
 
           <!-- TABLEAU ECART SALARIAL PAR ANNEE  -->
@@ -62,13 +97,17 @@
                       echo '</tr>';
                     }
                     $rep ->closeCursor();
+
                   ?>
+
+
             </table><br>
+
     </div>
 
 
 
-          
+
     <?php require_once "./footer.php";?>
 
 
