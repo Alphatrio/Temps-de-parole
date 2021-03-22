@@ -19,6 +19,7 @@
     <div class="container text-center addalinea">
 
       <!-- selection de l'année -->
+      <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.$tv.' </div>';?>
 
       <?php
 

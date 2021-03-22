@@ -1,19 +1,26 @@
 <?php
 // content="text/plain; charset=utf-8"
 include ('src/jpgraph.php');//Si pas ca le graph ne s'affichera pas
-include ("src/jpgraph_bar.php");// pour le barplot
+include ("src/jpgraph_line.php");// pour le barplot
 // appel bd
 include 'call_bd.php';
 
-$annee=$_GET['annee'];
+$media=htmlspecialchars($_GET['rnomMed']);
+
+
 // contenue et legendes
-$chaine= array();
+$annee= array();
 $temps_parole=array();
 $bdd = getBD_TDP(); //connexion BD
+$sql ="SELECT * FROM MEDIA WHERE MEDIA.rnomMed ='".$media."'";
 
-$res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee);
+$res=$bdd->query($sql);
+
+
+
+
 while ($row = $res->fetch()){ // Ajouter année devant, c'est pour la légende
-  $chaine[] = $row['rnomMed']; $temps_parole[] = $row['temps_parole'];
+  $annee[] = $row['annee']; $temps_parole[] = $row['temps_parole'];
 }
 
 $largeur = 300;
@@ -21,6 +28,8 @@ $hauteur = 400;
 
 // Initialisation du graphique
 $graph = new Graph($largeur, $hauteur);
+$graph->img->SetMargin(40,30,50,40);
+$graph->img->SetAntiAliasing("white");
 $graph->setScale("textlin");
 
 // Ajouter une ombre au conteneur
@@ -29,27 +38,30 @@ $graph->SetShadow();
 
 
 // Titre associé au graphe
-$graph->title->Set("Temps de parole par chaine");
+$graph->title->Set("Temps de parole par rapport aux années");
 
 // Axe x  ********************************
 //affichage des chaine et separation
 
-$graph->xaxis->SetTickLabels($chaine); $graph->xgrid->Show(true,true);
+$graph->xaxis->SetTickLabels($annee); $graph->xgrid->Show(true,true);
 
-
+$graph->ygrid->Show();
+$graph->xgrid->Show();
 
 
 // Create
-$histo = new BarPlot($temps_parole);//Permet d'avoir l'histogramme
+$courbe = new LinePlot($temps_parole);//Permet d'avoir l'histogramme
 //$histo->SetLegend($chaine);
 
 
-
-
 // ajouter le graphique histo au conteneur
-$graph->Add($histo);
+$graph->Add($courbe);
+
+$courbe->value->show();
+$courbe->value->SetColor('blue');
 
 
+$graph->xaxis->title->Set("Année");
 
 
 // Spécifier des couleurs personnalisées... #FF0000 ok
@@ -69,10 +81,10 @@ $graph->Add($histo);
 
 
 // Personnaliser la police et couleur des étiquettes
-$histo->value->SetColor('blue');
+
 
 // Provoquer l'affichage
-$graph->Stroke();
+$graph->stroke();
 
 
 ?>

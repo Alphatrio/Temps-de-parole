@@ -14,6 +14,7 @@
     <body>
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; ?>
+    <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.$radio.' </div>';?>
 
 
     <h2 class="display-4 text-center"><?php echo $radio; ?></h2>
