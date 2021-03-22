@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 01, 2021 at 10:50 PM
+-- Generation Time: Mar 22, 2021 at 02:26 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -179,7 +179,7 @@ CREATE TABLE `MEDIA` (
   `typeMed` varchar(5000) DEFAULT NULL,
   `rnomMed` varchar(5000) DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
-  `temp_parole` float DEFAULT NULL,
+  `temps_parole` float DEFAULT NULL,
   `annee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -187,7 +187,7 @@ CREATE TABLE `MEDIA` (
 -- Dumping data for table `MEDIA`
 --
 
-INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `annee`) VALUES
+INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temps_parole`, `annee`) VALUES
 (1, 'radio', 'cherie fm', 0, 47.1, 2002),
 (2, 'radio', 'cherie fm', 0, 46.03, 2003),
 (3, 'radio', 'cherie fm', 0, 48.38, 2004),
@@ -592,26 +592,26 @@ INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `an
 (402, 'tv', 'BFM TV', 0, 36.05, 2017),
 (403, 'tv', 'BFM TV', 0, 36.99, 2018),
 (404, 'tv', 'BFM TV', 0, 34.23, 2019),
-(405, 'tv', 'Canal+', 0, 21.51, 2010),
-(406, 'tv', 'Canal+', 0, 22.15, 2011),
-(407, 'tv', 'Canal+', 0, 22.35, 2012),
-(408, 'tv', 'Canal+', 0, 23.41, 2013),
-(409, 'tv', 'Canal+', 0, 22.12, 2014),
-(410, 'tv', 'Canal+', 0, 21.53, 2015),
-(411, 'tv', 'Canal+', 0, 22.09, 2016),
-(412, 'tv', 'Canal+', 0, 22.01, 2017),
-(413, 'tv', 'Canal+', 0, 22.48, 2018),
-(414, 'tv', 'Canal+', 0, 22.7, 2019),
-(415, 'tv', 'Canal+ Sport', 0, 5.72, 2010),
-(416, 'tv', 'Canal+ Sport', 0, 5.32, 2011),
-(417, 'tv', 'Canal+ Sport', 0, 5.11, 2012),
-(418, 'tv', 'Canal+ Sport', 0, 4.44, 2013),
-(419, 'tv', 'Canal+ Sport', 0, 5.95, 2014),
-(420, 'tv', 'Canal+ Sport', 0, 4.12, 2015),
-(421, 'tv', 'Canal+ Sport', 0, 4.38, 2016),
-(422, 'tv', 'Canal+ Sport', 0, 4.13, 2017),
-(423, 'tv', 'Canal+ Sport', 0, 5.37, 2018),
-(424, 'tv', 'Canal+ Sport', 0, 5.36, 2019),
+(405, 'tv', 'Canal plus', 0, 21.51, 2010),
+(406, 'tv', 'Canal plus', 0, 22.15, 2011),
+(407, 'tv', 'Canal plus', 0, 22.35, 2012),
+(408, 'tv', 'Canal plus', 0, 23.41, 2013),
+(409, 'tv', 'Canal plus', 0, 22.12, 2014),
+(410, 'tv', 'Canal plus', 0, 21.53, 2015),
+(411, 'tv', 'Canal plus', 0, 22.09, 2016),
+(412, 'tv', 'Canal plus', 0, 22.01, 2017),
+(413, 'tv', 'Canal plus', 0, 22.48, 2018),
+(414, 'tv', 'Canal plus', 0, 22.7, 2019),
+(415, 'tv', 'Canal plus Sport', 0, 5.72, 2010),
+(416, 'tv', 'Canal plus Sport', 0, 5.32, 2011),
+(417, 'tv', 'Canal plus Sport', 0, 5.11, 2012),
+(418, 'tv', 'Canal plus Sport', 0, 4.44, 2013),
+(419, 'tv', 'Canal plus Sport', 0, 5.95, 2014),
+(420, 'tv', 'Canal plus Sport', 0, 4.12, 2015),
+(421, 'tv', 'Canal plus Sport', 0, 4.38, 2016),
+(422, 'tv', 'Canal plus Sport', 0, 4.13, 2017),
+(423, 'tv', 'Canal plus Sport', 0, 5.37, 2018),
+(424, 'tv', 'Canal plus Sport', 0, 5.36, 2019),
 (425, 'tv', 'chasse et peche', 0, 7.91, 2010),
 (426, 'tv', 'chasse et peche', 0, 8.44, 2011),
 (427, 'tv', 'chasse et peche', 0, 7.18, 2012),
@@ -629,16 +629,16 @@ INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `an
 (439, 'tv', 'cherie 25', 0, 41.67, 2017),
 (440, 'tv', 'cherie 25', 0, 39.98, 2018),
 (441, 'tv', 'cherie 25', 0, 39.85, 2019),
-(442, 'tv', 'Comedie+', 0, 29.57, 2010),
-(443, 'tv', 'Comedie+', 0, 28.13, 2011),
-(444, 'tv', 'Comedie+', 0, 31.9, 2012),
-(445, 'tv', 'Comedie+', 0, 29.25, 2013),
-(446, 'tv', 'Comedie+', 0, 31.63, 2014),
-(447, 'tv', 'Comedie+', 0, 29.69, 2015),
-(448, 'tv', 'Comedie+', 0, 28.51, 2016),
-(449, 'tv', 'Comedie+', 0, 26.18, 2017),
-(450, 'tv', 'Comedie+', 0, 28.36, 2018),
-(451, 'tv', 'Comedie+', 0, 33.66, 2019),
+(442, 'tv', 'Comedie plus', 0, 29.57, 2010),
+(443, 'tv', 'Comedie plus', 0, 28.13, 2011),
+(444, 'tv', 'Comedie plus', 0, 31.9, 2012),
+(445, 'tv', 'Comedie plus', 0, 29.25, 2013),
+(446, 'tv', 'Comedie plus', 0, 31.63, 2014),
+(447, 'tv', 'Comedie plus', 0, 29.69, 2015),
+(448, 'tv', 'Comedie plus', 0, 28.51, 2016),
+(449, 'tv', 'Comedie plus', 0, 26.18, 2017),
+(450, 'tv', 'Comedie plus', 0, 28.36, 2018),
+(451, 'tv', 'Comedie plus', 0, 33.66, 2019),
 (452, 'tv', 'D8/C8', 0, 27.81, 2013),
 (453, 'tv', 'D8/C8', 0, 31.14, 2014),
 (454, 'tv', 'D8/C8', 0, 27.52, 2015),
@@ -802,16 +802,16 @@ INSERT INTO `MEDIA` (`idMed`, `typeMed`, `rnomMed`, `public`, `temp_parole`, `an
 (612, 'tv', 'NRJ 12', 0, 35.31, 2018),
 (613, 'tv', 'NRJ 12', 0, 31.21, 2019),
 (614, 'tv', 'Paris Premiere', 0, 24.83, 2010),
-(624, 'tv', 'Planete+', 0, 17.71, 2010),
-(625, 'tv', 'Planete+', 0, 15.79, 2011),
-(626, 'tv', 'Planete+', 0, 16.06, 2012),
-(627, 'tv', 'Planete+', 0, 15.65, 2013),
-(628, 'tv', 'Planete+', 0, 17.28, 2014),
-(629, 'tv', 'Planete+', 0, 15.88, 2015),
-(630, 'tv', 'Planete+', 0, 16.88, 2016),
-(631, 'tv', 'Planete+', 0, 16.26, 2017),
-(632, 'tv', 'Planete+', 0, 19.09, 2018),
-(633, 'tv', 'Planete+', 0, 20.5, 2019),
+(624, 'tv', 'Planete plus', 0, 17.71, 2010),
+(625, 'tv', 'Planete plus', 0, 15.79, 2011),
+(626, 'tv', 'Planete plus', 0, 16.06, 2012),
+(627, 'tv', 'Planete plus', 0, 15.65, 2013),
+(628, 'tv', 'Planete plus', 0, 17.28, 2014),
+(629, 'tv', 'Planete plus', 0, 15.88, 2015),
+(630, 'tv', 'Planete plus', 0, 16.88, 2016),
+(631, 'tv', 'Planete plus', 0, 16.26, 2017),
+(632, 'tv', 'Planete plus', 0, 19.09, 2018),
+(633, 'tv', 'Planete plus', 0, 20.5, 2019),
 (634, 'tv', 'TF1', 0, 32.37, 2010),
 (635, 'tv', 'TF1', 0, 34.65, 2011),
 (636, 'tv', 'TF1', 0, 35.93, 2012),
@@ -910,7 +910,9 @@ CREATE TABLE `UTILISATEUR` (
 --
 
 INSERT INTO `UTILISATEUR` (`idUtilisateur`, `pseudo`, `mdp_u`, `mail_utilisateur`) VALUES
-(1, 'Robin', 'a', 'rr@rr.fr');
+(1, 'Robin', 'a', 'rr@rr.fr'),
+(2, 'R', 'r', 'r'),
+(3, 'Romane27', 'op', 'opop');
 
 --
 -- Indexes for dumped tables
@@ -999,7 +1001,7 @@ ALTER TABLE `COMMENTAIRE`
 -- AUTO_INCREMENT for table `UTILISATEUR`
 --
 ALTER TABLE `UTILISATEUR`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

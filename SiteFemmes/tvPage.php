@@ -9,8 +9,8 @@
 
     <body>
     <?php require_once "./header.php";?>
-    <?php $tv = $_GET['rnomMed']; ?>
 
+    <?php $tv = $_GET['rnomMed'];  ?>
 
     <h2 class="display-4 text-center"><?php echo $tv; ?></h2>
     <div class="container text-center addalinea">
@@ -21,7 +21,7 @@
 
       if(!isset($_POST['submit'])) {
         echo '<form method="post" autocomplete="off">';
-        echo '<label>Choisissez une année :</label>';
+        echo '<label>Choisissez une année :</label><br>';
 
         $bdd = getBD_TDP();
         $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$tv.'"');
@@ -36,7 +36,7 @@
         $rep ->closeCursor();
 
         echo '</select><br><br>';
-        echo '<input class="submit" type="submit" name="submit" value="Valider">';
+        echo '<input class="btn btn-dark" type="submit" name="submit" value="Valider">';
         echo '</form>';
       }
 
@@ -46,7 +46,7 @@
         $anneeTV = $_POST['anneeTV'];
         echo '<p class="anneeMediaChoisi">'.$anneeTV.'</p>';
         echo '<table class="table">';
-        echo '<thead class="thead bg-danger">';
+        echo '<thead class="thead-dark">';
         echo '  <tr>';
         echo '    <th scope="col">Temps de parole : femmes</th>';
         echo '    <th scope="col">Temps de parole : hommes</th>';
@@ -54,18 +54,20 @@
         echo '</thead>';
 
         $bdd = getBD_TDP();
-        $rep = $bdd->query('SELECT temp_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$tv.'" AND MEDIA.annee = "'.$anneeTV.'"');
+        $rep = $bdd->query('SELECT temps_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$tv.'" AND MEDIA.annee = "'.$anneeTV.'"');
         $tps_parole = $rep ->fetch();
         $percentage = 100;
           echo '<tr>';
-          echo '<td>'.$tps_parole['temp_parole'].' %</td>';
-          echo '<td>'.($percentage - $tps_parole['temp_parole']).' %</td>';
+          echo '<td>'.$tps_parole['temps_parole'].' %</td>';
+          echo '<td>'.($percentage - $tps_parole['temps_parole']).' %</td>';
           echo '</tr>';
           echo '</table><br>';
         $rep ->closeCursor();
     }
     ?>
+      </div>
     </div>
+    <br> <br>
     <?php require_once "./footer.php";?>
 
 

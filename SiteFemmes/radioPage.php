@@ -56,12 +56,12 @@
           echo '</thead>';
 
           $bdd = getBD_TDP();
-          $rep = $bdd->query('SELECT temp_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" AND MEDIA.annee = "'.$anneeRadio.'"');
+          $rep = $bdd->query('SELECT temps_parole FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" AND MEDIA.annee = "'.$anneeRadio.'"');
           $tps_parole = $rep ->fetch();
           $percentage = 100;
             echo '<tr>';
-            echo '<td>'.$tps_parole['temp_parole'].' %</td>';
-            echo '<td>'.($percentage - $tps_parole['temp_parole']).' %</td>';
+            echo '<td>'.$tps_parole['temps_parole'].' %</td>';
+            echo '<td>'.($percentage - $tps_parole['temps_parole']).' %</td>';
             echo '</tr>';
             echo '</table><br>';
           $rep ->closeCursor();
