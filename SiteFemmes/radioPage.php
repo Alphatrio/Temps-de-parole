@@ -1,3 +1,6 @@
+<?php
+       session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -28,7 +31,7 @@
           $bdd = getBD_TDP();
           $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'"');
           $nbAnnee = $rep ->fetch();
-          echo '<select class="selectRadioTV" name="anneeRadio" size="'.$nbAnnee.'">';
+          echo '<select class="selectRadioTV" name="anneeRadio" size="1">'; // try size ="'.$nbAnnee.'"
           $rep ->closeCursor();
 
           $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" ORDER BY annee ASC');
