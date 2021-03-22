@@ -48,7 +48,7 @@
           $anneeRadio = $_POST['anneeRadio'];
           echo '<p class="anneeMediaChoisi">'.$anneeRadio.'</p>';
           echo '<table class="table">';
-          echo '<thead class="thead-dark">';
+          echo '<thead class="thead bg-success">';
           echo '  <tr>';
           echo '    <th scope="col">Temps de parole : femmes</th>';
           echo '    <th scope="col">Temps de parole : hommes</th>';

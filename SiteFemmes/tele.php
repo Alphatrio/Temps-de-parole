@@ -14,14 +14,14 @@
 	<?php require_once "./header.php";?>
   <!-- <div class ="container addalinea"> -->
   <div class="list-group text-center">
-    <div class="list-group-item list-group-item-action active bg-info border-0 rounded-0">
+    <div class="list-group-item list-group-item-action active bg-danger border-0 rounded-0">
       <tr>
         <?php
           $bdd = getBD_TDP();
           $rep = $bdd->query('SELECT  COUNT(DISTINCT rnomMed) FROM MEDIA WHERE MEDIA.typeMed = "tv"');
           $count = $rep ->fetch();
           // var_dump($count);
-            echo '<div class="list-group-item list-group-item-action active disabled bg-info border-0">TVs ('.$count[0].')</div>';
+            echo '<div class="list-group-item list-group-item-action active disabled bg-danger border-0">TVs ('.$count[0].')</div>';
           $rep ->closeCursor();
         ?>
       </tr>
@@ -31,7 +31,7 @@
           $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "tv" ORDER BY rnomMed ASC/* formulaire */');
           while ($ligne = $rep ->fetch()) {
             echo '<tr>';
-            echo '<a class="list-group-item list-group-item-action" href="radioPage.php?rnomMed='.$ligne['rnomMed'].'">'.$ligne['rnomMed'].' </a>';
+            echo '<a class="list-group-item list-group-item-action" href="tvPage.php?rnomMed='.$ligne['rnomMed'].'">'.$ligne['rnomMed'].' </a>';
             echo '</tr>';
           }
           $rep ->closeCursor();

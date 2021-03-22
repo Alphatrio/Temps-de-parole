@@ -23,7 +23,7 @@
     <div class="container text-center addalinea">
         <!-- TABLEAU ELUES PAR ANNEE -->
         <table class="table">
-          <thead class="thead-dark" >
+          <thead class="thead bg-info" >
             <tr>
               <th scope="col">Type d'élues</th>
               <th scope="col">% femmes</th>
@@ -53,9 +53,9 @@
                     echo '<td>'.$ligne['repartitionElues'].' %</td>';
                     echo '<td>'.($percentage - $ligne['repartitionElues']).' %</td>';
                     echo '</tr>';
-                    if($isempty){
+                    /* if($isempty){
                       echo "Désolé, il n'existe pas de données pour cette année et/ou catégorie";
-                    }
+                    } */
                   }
                   
                 
@@ -93,7 +93,7 @@
 
           <!-- TABLEAU ECART SALARIAL PAR ANNEE  -->
           <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead bg-info">
               <tr>
                 <th scope="col">Écart salarial dans le privé</th>
                 <th scope="col">Écart salarial dans le public</th>
