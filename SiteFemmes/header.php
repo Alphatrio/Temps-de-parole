@@ -3,8 +3,8 @@
 			<h1 class="text-center display-4">Les Femmes à la TV et à la Radio</h1>
 		</div>
 </div>
-	
-	
+
+
 	<nav class="navbar <?php if($_SESSION['screen_width']>=1000){echo "navbar-expand-sm"; }else{ echo "navbar";} ?> sticky-top navbar-dark bg-dark">
 		<div class="container-fluid">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,13 +13,13 @@
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" href="index.php">Home  <i class="fas fa-calendar-alt"></i><span class="sr-only"></span></a>
+						<a class="nav-link active" href="index.php"><i class="fas fa-calendar-alt"></i> Home<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="radio.php">Radio  <i class="fas fa-broadcast-tower"></i></a>
+						<a  class="nav-link" href="radio.php"><i class="fas fa-broadcast-tower"></i> Radio  </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="tele.php">Télévision <i class="fas fa-tv"></i></a>
+						<a class="nav-link" href="tele.php"><i class="fas fa-tv"></i> Télévision</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
