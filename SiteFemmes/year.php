@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-
-
     <?php require 'call_bd.php';?>
     <meta charset="utf-8">
     <title>Année</title>
@@ -14,13 +12,7 @@
 
     <body>
 
-
     <?php require_once "./header.php";?>
-
-
-
-
-
 
       <h2 class="display-4 text-center"><?php echo $_GET['annee']; ?></h2>
     <div class="container text-center addalinea">
@@ -35,9 +27,6 @@
           </thead>
 
                 <?php
-
-
-
 
                   $bdd = getBD_TDP();
                   $annee=$_GET['annee'];
@@ -60,8 +49,8 @@
                       echo "Désolé, il n'existe pas de données pour cette année et/ou catégorie";
                     } */
                   }
-                  
-                
+
+
 
 
 
@@ -81,15 +70,38 @@
 
                   ?>
                 <?php
-                  echo '<div> <img src=graphAnnee.php?annee='.$annee.' </div>';
-                    
-                
+
+                if(!isset($_POST['submit'])) {
+                  echo '<br><form method="GET" autocomplete="off">';
+                  echo '<label>Choisissez les chaines que vous souhaitez comparer :</label><br>';
+
+                  $bdd = getBD_TDP();
+                  $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');
+                  // echo '<select name="chaines" size="1">'; // try size ="'.$nbAnnee.'"
+                  while ($chaines = $rep ->fetch()) {
+                    echo '<input type="checkbox" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
+                  }
+                  $rep ->closeCursor();
+
+                  // echo '</select><br><br>';
+                  echo '<br><input class="btn btn-dark" type="submit" name="submit" value="Valider"><br>';
+                  echo '</form>';
+                  echo '<br>';
+
+                }
+
+                //tableau avec temps de parole femmes/hommes selon l'année choisie
+
+                else {
+                  $chainesChoisies = $_GET['chaine'];
+                  echo '<div> <img src=graphAnnee.php?annee='.$annee.'&chaine='.$chainesChoisies.'</div>';
+              }
+
+
+
+
+
                 ?>
-
-
-
-
-
 
 
           </table><br>
@@ -124,33 +136,6 @@
 
     <?php require_once "./commentaire_annee.php";?>
     <?php require_once "./footer.php";?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <?php require_once "./scriptsjs.php";?>
   </body>
 </html>

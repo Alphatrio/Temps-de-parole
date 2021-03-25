@@ -7,13 +7,16 @@ include 'call_bd.php';
 
 $annee=$_GET['annee'];
 // contenue et legendes
-$chaine= array();
+$chaines = $_GET['chaine'];
 $temps_parole=array();
 $bdd = getBD_TDP(); //connexion BD
 
-$res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee);
-while ($row = $res->fetch()){ // Ajouter année devant, c'est pour la légende
-  $chaine[] = $row['rnomMed']; $temps_parole[] = $row['temps_parole'];
+foreach ($chaines as $chaine){
+
+  $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee.' and MEDIA.rnomMed="'.$chaine[].'"' );
+  $row = $res->fetch() // Ajouter année devant, c'est pour la légende
+
+  $temps_parole[] = $row['temps_parole'];
 }
 
 $largeur = 300;
@@ -34,7 +37,7 @@ $graph->title->Set("Temps de parole par chaine");
 // Axe x  ********************************
 //affichage des chaine et separation
 
-$graph->xaxis->SetTickLabels($chaine); $graph->xgrid->Show(true,true);
+$graph->xaxis->SetTickLabels($chaines); $graph->xgrid->Show(true,true);
 
 
 
