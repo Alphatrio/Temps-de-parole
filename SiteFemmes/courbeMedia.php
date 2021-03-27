@@ -5,7 +5,7 @@ include ("src/jpgraph_line.php");// pour le barplot
 // appel bd
 include 'call_bd.php';
 
-$media=htmlspecialchars($_GET['rnomMed']);
+$media=$_GET['rnomMed'];
 
 
 // contenue et legendes
@@ -23,7 +23,7 @@ while ($row = $res->fetch()){ // Ajouter année devant, c'est pour la légende
   $annee[] = $row['annee']; $temps_parole[] = $row['temps_parole'];
 }
 
-$largeur = 300;
+$largeur = 600;
 $hauteur = 400;
 
 // Initialisation du graphique
