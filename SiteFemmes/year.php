@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <script type="text/javascript" src="limite.js" > </script>
     <?php require 'call_bd.php';?>
     <meta charset="utf-8">
     <title>Année</title>
@@ -79,7 +80,7 @@
                   $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');
                   // echo '<select name="chaines" size="1">'; // try size ="'.$nbAnnee.'"
                   while ($chaines = $rep ->fetch()) {
-                    echo '<input type="checkbox" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
+                    echo '<input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
                   }
                   $rep ->closeCursor();
 
@@ -98,11 +99,11 @@
                         echo $chaine.'<br>';
                         array_push($chainesChoisies, $chaine);
                       }
-                      print_r ($chainesChoisies);
+
 
                       $_SESSION['chainesChoisies']=$chainesChoisies;
                       $_SESSION['annee']=$annee;
-                      echo '<div> <img src=graphAnnee.php?</div>';
+                      echo '<div> <img src=graphAnnee.php </div>';
                       // echo '<div> <img src=graphAnnee.php?annee='.$annee.'</div>';
                   }
                   else {

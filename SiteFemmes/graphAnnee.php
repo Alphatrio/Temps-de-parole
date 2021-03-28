@@ -14,13 +14,13 @@ $bdd=getBD_TDP(); //connexion BD
 
 foreach ($chaines as $chaine){
 
-  $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee.' and MEDIA.rnomMed="'.$chaine[].'"' );
-  $row = $res->fetch() // Ajouter année devant, c'est pour la légende
+  $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee.' and MEDIA.rnomMed="'.$chaine.'"' );
+  $row = $res->fetch(); // Ajouter année devant, c'est pour la légende
 
-  $temps_parole[] = $row['temps_parole'];
+  array_push($temps_parole,$row['temps_parole']);
 }
 
-$largeur = 300;
+$largeur = 600;
 $hauteur = 400;
 
 // Initialisation du graphique
