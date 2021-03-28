@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <script type="text/javascript" src="limite.js" > </script>
+    <script type="text/javascript" src="limites.js"></script>
     <?php require 'call_bd.php';?>
     <meta charset="utf-8">
     <title>Année</title>
@@ -80,7 +80,14 @@
                   $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');
                   // echo '<select name="chaines" size="1">'; // try size ="'.$nbAnnee.'"
                   while ($chaines = $rep ->fetch()) {
-                    echo '<input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
+
+                    // echo '<div class="form-check">
+                    //   <input class="form-check-input" type="checkbox" name="chaine[]" value="'.$chaines['rnomMed'].'" id="flexCheckDefault">
+                    //   <label class="form-check-label" for="flexCheckDefault">
+                    //     '.$chaines['rnomMed'].'
+                    //   </label>
+                    // </div>';
+                    echo '<input class="input" type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
                   }
                   $rep ->closeCursor();
 
@@ -96,7 +103,6 @@
                   if(isset($_POST['chaine'])){
                     $chainesChoisies = array();
                     foreach ($_POST['chaine'] as $chaine) {
-                        echo $chaine.'<br>';
                         array_push($chainesChoisies, $chaine);
                       }
 

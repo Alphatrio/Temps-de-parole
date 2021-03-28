@@ -33,7 +33,7 @@ $graph->SetShadow();
 
 
 // Titre associé au graphe
-$graph->title->Set("Temps de parole par chaine");
+$graph->title->Set("Temps de parole par chaine (%)");
 
 // Axe x  ********************************
 //affichage des chaine et separation
