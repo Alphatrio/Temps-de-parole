@@ -72,7 +72,7 @@
                 <?php
 
                 if(!isset($_POST['submit'])) {
-                  echo '<br><form method="GET" autocomplete="off">';
+                  echo '<br><form method="POST" autocomplete="off">';
                   echo '<label>Choisissez les chaines que vous souhaitez comparer :</label><br>';
 
                   $bdd = getBD_TDP();
@@ -87,22 +87,29 @@
                   echo '<br><input class="btn btn-dark" type="submit" name="submit" value="Valider"><br>';
                   echo '</form>';
                   echo '<br>';
-
                 }
 
                 //tableau avec temps de parole femmes/hommes selon l'année choisie
 
                 else {
-                  $chainesChoisies = $_GET['chaine'];
-                  echo '<div> <img src=graphAnnee.php?annee='.$annee.'&chaine='.$chainesChoisies.'</div>';
+                  if(isset($_POST['chaine'])){
+                    $chainesChoisies = array();
+                    foreach ($_POST['chaine'] as $chaine) {
+                        echo $chaine.'<br>';
+                        array_push($chainesChoisies, $chaine);
+                      }
+                      print_r ($chainesChoisies);
+
+                      $_SESSION['chainesChoisies']=$chainesChoisies;
+                      $_SESSION['annee']=$annee;
+                      echo '<div> <img src=graphAnnee.php?</div>';
+                      // echo '<div> <img src=graphAnnee.php?annee='.$annee.'</div>';
+                  }
+                  else {
+                    echo '<br>Pour accéder au graphique, veuillez selectionner au moins une chaine radio/TV<br><br>';
+                  }
               }
-
-
-
-
-
                 ?>
-
 
           </table><br>
 

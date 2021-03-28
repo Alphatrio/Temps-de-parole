@@ -1,15 +1,16 @@
 <?php
+session_start();
 // content="text/plain; charset=utf-8"
 include ('src/jpgraph.php');//Si pas ca le graph ne s'affichera pas
 include ("src/jpgraph_bar.php");// pour le barplot
 // appel bd
 include 'call_bd.php';
 
-$annee=$_GET['annee'];
+$annee=$_SESSION['annee'];
 // contenue et legendes
-$chaines = $_GET['chaine'];
+$chaines=$_SESSION['chainesChoisies'];
 $temps_parole=array();
-$bdd = getBD_TDP(); //connexion BD
+$bdd=getBD_TDP(); //connexion BD
 
 foreach ($chaines as $chaine){
 

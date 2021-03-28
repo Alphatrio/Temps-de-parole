@@ -22,7 +22,6 @@
       <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.urlencode($tv).' </div>';?>
 
       <?php
-
       if(!isset($_POST['submit'])) {
         echo '<form method="post" autocomplete="off">';
         echo '<label>Choisissez une année :</label><br>';
