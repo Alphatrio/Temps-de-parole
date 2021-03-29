@@ -144,7 +144,12 @@
 
 
 
-    <?php require_once "./commentaire_annee.php";?>
+    <?php require_once "./forum_annee.php";?>
+     <?php if(($_SESSION['client'])){
+          require_once "./commentaire_annee.php";
+        }
+        else{}
+        ?>
     <?php require_once "./footer.php";?>
     <?php require_once "./scriptsjs.php";?>
   </body>

@@ -12,7 +12,7 @@
 
   	function commentaire($com,$ref,$pseudo,$date){
         $bdd = getBD_TDP();
-        $query = "INSERT INTO commentaire (commentaire_texte,ref) VALUES(?,?,?,?)";
+        $query = "INSERT INTO commentaire (commentaire_texte,ref,pseudo,dateCom) VALUES(?,?,?,?)";
         $data = array($com,$ref,$pseudo,$date);
         $statement = $bdd->prepare($query); 
         $exec = $statement->execute($data);

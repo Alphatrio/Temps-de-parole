@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 29, 2021 at 10:27 AM
+-- Generation Time: Mar 29, 2021 at 11:25 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -93,7 +93,8 @@ CREATE TABLE `commentaire` (
 --
 
 INSERT INTO `commentaire` (`idCom`, `commentaire_texte`, `ref`, `pseudo`, `dateCom`) VALUES
-(2, ' Test', '1995', 'Alphatrio', '2021-03-29 10:21:34');
+(2, ' Test', '1995', 'Alphatrio', '2021-03-29 10:21:34'),
+(3, ' Test 2', '1995', 'Alphatrio', '2021-03-29 11:11:26');
 
 -- --------------------------------------------------------
 
@@ -1016,7 +1017,7 @@ ALTER TABLE `amelioration`
 -- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `utilisateur`
