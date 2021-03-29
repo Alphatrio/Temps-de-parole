@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 23, 2021 at 09:38 AM
+-- Generation Time: Mar 29, 2021 at 10:27 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -85,8 +85,15 @@ CREATE TABLE `commentaire` (
   `commentaire_texte` varchar(5000) DEFAULT NULL,
   `ref` varchar(100) DEFAULT NULL,
   `pseudo` varchar(255) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
+  `dateCom` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `commentaire`
+--
+
+INSERT INTO `commentaire` (`idCom`, `commentaire_texte`, `ref`, `pseudo`, `dateCom`) VALUES
+(2, ' Test', '1995', 'Alphatrio', '2021-03-29 10:21:34');
 
 -- --------------------------------------------------------
 
@@ -1009,7 +1016,7 @@ ALTER TABLE `amelioration`
 -- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `utilisateur`
