@@ -73,7 +73,7 @@
     <br> <br>
 
     <?php require_once "./forum_media.php";?>
-    <?phpif(($_SESSION['client'])){
+    <?php if(($_SESSION['client'])){
       require_once "./commentaire_media.php";}?>
     <?php require_once "./footer.php";?>
 
