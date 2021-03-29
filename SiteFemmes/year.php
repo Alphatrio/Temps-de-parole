@@ -145,11 +145,13 @@
 
 
     <?php require_once "./forum_annee.php";?>
-     <?php if(($_SESSION['client'])){
-          require_once "./commentaire_annee.php";
-        }
-        else{}
-        ?>
+     <?php if(empty($_SESSION['client'])){
+      echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
+    }
+
+
+      else{
+      require_once "./commentaire_annee.php";}?>
     <?php require_once "./footer.php";?>
     <?php require_once "./scriptsjs.php";?>
   </body>

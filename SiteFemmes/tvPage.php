@@ -73,7 +73,12 @@
     <br> <br>
 
     <?php require_once "./forum_media.php";?>
-    <?php if(($_SESSION['client'])){
+    <?php if(empty($_SESSION['client'])){
+      echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
+    }
+
+
+      else{
       require_once "./commentaire_media.php";}?>
     <?php require_once "./footer.php";?>
 
