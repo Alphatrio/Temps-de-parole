@@ -1,26 +1,25 @@
 <?php
-session_start();
 // content="text/plain; charset=utf-8"
 include ('src/jpgraph.php');//Si pas ca le graph ne s'affichera pas
 include ("src/jpgraph_bar.php");// pour le barplot
 // appel bd
 include 'call_bd.php';
 
-$annee=$_SESSION['annee'];
+$annee=$_GET['annee'];
 // contenue et legendes
-$chaines=$_SESSION['chainesChoisies'];
+$chaines = $_GET['chaine'];
 $temps_parole=array();
-$bdd=getBD_TDP(); //connexion BD
+$bdd = getBD_TDP(); //connexion BD
 
 foreach ($chaines as $chaine){
 
-  $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee.' and MEDIA.rnomMed="'.$chaine.'"' );
-  $row = $res->fetch(); // Ajouter année devant, c'est pour la légende
+  $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee.' and MEDIA.rnomMed="'.$chaine[].'"' );
+  $row = $res->fetch() // Ajouter année devant, c'est pour la légende
 
-  array_push($temps_parole,$row['temps_parole']);
+  $temps_parole[] = $row['temps_parole'];
 }
 
-$largeur = 600;
+$largeur = 300;
 $hauteur = 400;
 
 // Initialisation du graphique
@@ -33,7 +32,7 @@ $graph->SetShadow();
 
 
 // Titre associé au graphe
-$graph->title->Set("Temps de parole par chaine (%)");
+$graph->title->Set("Temps de parole par chaine");
 
 // Axe x  ********************************
 //affichage des chaine et separation

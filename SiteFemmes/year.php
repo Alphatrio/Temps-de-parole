@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <script type="text/javascript" src="limites.js"></script>
     <?php require 'call_bd.php';?>
     <meta charset="utf-8">
     <title>Année</title>
@@ -73,21 +72,14 @@
                 <?php
 
                 if(!isset($_POST['submit'])) {
-                  echo '<br><form method="POST" autocomplete="off">';
+                  echo '<br><form method="GET" autocomplete="off">';
                   echo '<label>Choisissez les chaines que vous souhaitez comparer :</label><br>';
 
                   $bdd = getBD_TDP();
                   $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');
                   // echo '<select name="chaines" size="1">'; // try size ="'.$nbAnnee.'"
                   while ($chaines = $rep ->fetch()) {
-
-                    // echo '<div class="form-check">
-                    //   <input class="form-check-input" type="checkbox" name="chaine[]" value="'.$chaines['rnomMed'].'" id="flexCheckDefault">
-                    //   <label class="form-check-label" for="flexCheckDefault">
-                    //     '.$chaines['rnomMed'].'
-                    //   </label>
-                    // </div>';
-                    echo '<input class="input" type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
+                    echo '<input type="checkbox" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
                   }
                   $rep ->closeCursor();
 
@@ -95,28 +87,22 @@
                   echo '<br><input class="btn btn-dark" type="submit" name="submit" value="Valider"><br>';
                   echo '</form>';
                   echo '<br>';
+
                 }
 
                 //tableau avec temps de parole femmes/hommes selon l'année choisie
 
                 else {
-                  if(isset($_POST['chaine'])){
-                    $chainesChoisies = array();
-                    foreach ($_POST['chaine'] as $chaine) {
-                        array_push($chainesChoisies, $chaine);
-                      }
-
-
-                      $_SESSION['chainesChoisies']=$chainesChoisies;
-                      $_SESSION['annee']=$annee;
-                      echo '<div> <img src=graphAnnee.php </div>';
-                      // echo '<div> <img src=graphAnnee.php?annee='.$annee.'</div>';
-                  }
-                  else {
-                    echo '<br>Pour accéder au graphique, veuillez selectionner au moins une chaine radio/TV<br><br>';
-                  }
+                  $chainesChoisies = $_GET['chaine'];
+                  echo '<div> <img src=graphAnnee.php?annee='.$annee.'&chaine='.$chainesChoisies.'</div>';
               }
+
+
+
+
+
                 ?>
+
 
           </table><br>
 
@@ -147,8 +133,12 @@
     </div>
 
 
-
-    <?php require_once "./commentaire_annee.php";?>
+    <?php require_once "./forum_annee.php";?>
+     <?php if(($_SESSION['client'])){
+          require_once "./commentaire_annee.php";
+        }
+        else{}
+        ?>
     <?php require_once "./footer.php";?>
     <?php require_once "./scriptsjs.php";?>
   </body>
