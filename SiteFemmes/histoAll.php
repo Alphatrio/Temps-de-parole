@@ -37,7 +37,7 @@ $graph->title->Set("Temps de parole par chaine");
 // Axe x  ********************************
 //affichage des chaine et separation
 
-$graph->xaxis->SetTickLabels($chaines); $graph->xgrid->Show(true,true);
+$graph->xaxis->SetTickLabels($chaine); $graph->xgrid->Show(true,true);
 
 
 

@@ -19,10 +19,9 @@
     <div class="container text-center addalinea">
 
       <!-- selection de l'année -->
-      <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.$tv.' </div>';?>
+      <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.urlencode($tv).' </div>';?>
 
       <?php
-
       if(!isset($_POST['submit'])) {
         echo '<form method="post" autocomplete="off">';
         echo '<label>Choisissez une année :</label><br>';
@@ -72,9 +71,8 @@
       </div>
     </div>
     <br> <br>
-    <?php require_once "./forum_media.php";?>
-    <?phpif(($_SESSION['client'])){
-      require_once "./commentaire_media.php";}?>
+
+    <?php require_once "./commentaire_media.php";?>
     <?php require_once "./footer.php";?>
 
 

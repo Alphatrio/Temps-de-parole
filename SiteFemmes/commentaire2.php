@@ -12,13 +12,13 @@
 
   	function commentaire($com,$ref,$pseudo,$date){
         $bdd = getBD_TDP();
-        $query = "INSERT INTO commentaire (commentaire_texte,ref,pseudo,dateCom) VALUES(?,?,?,?)";
+        $query = "INSERT INTO commentaire (commentaire_texte,ref) VALUES(?,?,?,?)";
         $data = array($com,$ref,$pseudo,$date);
         $statement = $bdd->prepare($query); 
         $exec = $statement->execute($data);
     }
 
-    commentaire($_POST['com'],$_POST['ref'],$_SESSION['client']['pseudo'],date('Y-m-d H:i:s'));
+    commentaire($_POST['com'],$_POST['ref'],$_SESSION['client']['pseudo'],date());
     echo '<meta http-equiv="Refresh" content="0; URL=index.php"/>';
 			
             

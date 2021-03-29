@@ -14,7 +14,7 @@
     <body>
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; ?>
-    <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.$radio.' </div>';?>
+    <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' </div>';?>
 
 
     <h2 class="display-4 text-center"><?php echo $radio; ?></h2>
@@ -74,10 +74,7 @@
       </div>
     </div>
     <br> <br>
-    <?php require_once "./forum_media.php";?>
-    <?php if(($_SESSION['client'])){
-      require_once "./commentaire_media.php";
-    }?>
+    <?php require_once "./commentaire_media.php";?>
     <?php require_once "./footer.php";?>
 
 
