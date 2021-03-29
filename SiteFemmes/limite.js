@@ -8,7 +8,7 @@ function limite(obj)
  }
  if(j>6)
  {
-    alert('Vous avez coché plus de 6 cases');
+    alert('Vous avez coche plus de 6 cases');
     obj.checked=false;
 	return false;
  }

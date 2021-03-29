@@ -4,13 +4,14 @@
 		<td> Date </td>
 		<td> Message </td>
 	</tr>
-	
+
 		<?php
 		$bdd = getBD_TDP();
         $media=$_GET['rnomMed'];
-        $rep = $bdd->query('SELECT * FROM commentaire WHERE ref =' .$media);
+				$sql="SELECT * FROM commentaire WHERE ref ='".$media."'";
+        $rep = $bdd->query($sql);
         while ($ligne = $rep ->fetch()) {
-        	echo '<tr> <td> '.$ligne['pseudo'].'</td>'; 
+        	echo '<tr> <td> '.$ligne['pseudo'].'</td>';
         	echo '<td> '.$ligne['dateCom'].'</td>';
         	echo'<td>'.$ligne['commentaire_texte'].'</td></tr>';
         }
