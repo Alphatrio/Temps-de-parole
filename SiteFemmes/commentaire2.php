@@ -18,7 +18,7 @@
         $exec = $statement->execute($data);
     }
 
-    commentaire($_POST['com'],$_POST['ref'],$_SESSION['client']['pseudo'],date());
+    commentaire($_POST['com'],$_POST['ref'],$_SESSION['client']['pseudo'],date('Y-m-d H:i:s'));
     echo '<meta http-equiv="Refresh" content="0; URL=index.php"/>';
 			
             
