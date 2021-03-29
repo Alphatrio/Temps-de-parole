@@ -34,7 +34,7 @@
 </head>
 
 <body>
-  
+
 
 
 
@@ -50,7 +50,7 @@
 
               <?php
                 $bdd = getBD_TDP();
-                $rep = $bdd->query('SELECT annee FROM Esalaire ORDER BY annee ASC');
+                $rep = $bdd->query('SELECT annee FROM Esalaire ORDER BY annee DESC');
                 while ($ligne = $rep ->fetch()) {
                   echo '<tr>';
                   echo '<a class="list-group-item list-group-item-action" href="year.php?annee='.$ligne['annee'].'">'.$ligne['annee'].'</a>';
