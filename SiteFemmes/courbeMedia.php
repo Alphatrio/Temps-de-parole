@@ -1,11 +1,12 @@
 <?php
+// source pour certaines explications: source :https://eric-pommereau.developpez.com/tutoriels/decouverte-jpgraph/?page=page-2#LII-E
 // content="text/plain; charset=utf-8"
 include ('src/jpgraph.php');//Si pas ca le graph ne s'affichera pas
-include ("src/jpgraph_line.php");// pour le barplot
+include ("src/jpgraph_line.php");// pour la courbe
 // appel bd
 include 'call_bd.php';
 
-$media=$_GET['rnomMed'];
+$media=$_GET['rnomMed'];//recuperation du nom du media
 
 
 // contenue et legendes
@@ -19,17 +20,17 @@ $res=$bdd->query($sql);
 
 
 
-while ($row = $res->fetch()){ // Ajouter année devant, c'est pour la légende
-  $annee[] = $row['annee']; $temps_parole[] = $row['temps_parole'];
+while ($row = $res->fetch()){ // recuperation des données pour le graphique
+  $annee[] = $row['annee']; $temps_parole[] = $row['temps_parole']; // et d'une année pour la legende
 }
 
-$largeur = 600;
+$largeur = 800;
 $hauteur = 400;
 
 // Initialisation du graphique
 $graph = new Graph($largeur, $hauteur);
-$graph->img->SetMargin(40,30,50,40);
-$graph->img->SetAntiAliasing("white");
+$graph->img->SetMargin(40,30,50,40);//fixe les marges
+$graph->img->SetAntiAliasing("white");//evite la pixelisation
 $graph->setScale("textlin");
 
 // Ajouter une ombre au conteneur
@@ -41,46 +42,35 @@ $graph->SetShadow();
 $graph->title->Set("Temps de parole par rapport aux années");
 
 // Axe x  ********************************
-//affichage des chaine et separation
 
-$graph->xaxis->SetTickLabels($annee); $graph->xgrid->Show(true,true);
+//affiche les années
+$graph->xaxis->SetTickLabels($annee);
+
+//affiche une grille
 
 $graph->ygrid->Show();
 $graph->xgrid->Show();
 
 
-// Create
-$courbe = new LinePlot($temps_parole);//Permet d'avoir l'histogramme
-//$histo->SetLegend($chaine);
+
+// Creation de la courbe
+$courbe = new LinePlot($temps_parole);//Permet d'avoir la courbe
 
 
-// ajouter le graphique histo au conteneur
+
+// ajouter la courbe au conteneur
 $graph->Add($courbe);
 
+//affiche les valeurs
 $courbe->value->show();
+//couleur bleu pour la courbe
 $courbe->value->SetColor('blue');
 
-
+//nom de l'axe x
 $graph->xaxis->title->Set("Année");
 
 
-// Spécifier des couleurs personnalisées... #FF0000 ok
 
-
-// Légendes qui accompagnent le graphique, ici chaque chaine avec sa couleur
-
-
-// Position du graphique (0.5=centré)
-
-
-// Type de valeur (pourcentage ou valeurs)
-
-
-
-// Personnalisation des étiquettes pour chaque partie
-
-
-// Personnaliser la police et couleur des étiquettes
 
 
 // Provoquer l'affichage

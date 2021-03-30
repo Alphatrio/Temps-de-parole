@@ -8,9 +8,9 @@ include 'call_bd.php';
 
 
 
-$annee=$_SESSION['annee'];
+$annee=$_SESSION['annee'];//recupere l'année
 // contenue et legendes
-$chaines=$_SESSION['chainesChoisies'];
+$chaines=$_SESSION['chainesChoisies'];//recupere les infos pour les meedias de la chekbox
 $temps_parole=array();
 $bdd=getBD_TDP(); //connexion BD
 
@@ -20,13 +20,13 @@ $bdd=getBD_TDP(); //connexion BD
 foreach ($chaines as $chaine){
 
   $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee.' and MEDIA.rnomMed="'.$chaine.'"' );
-  $row = $res->fetch(); // Ajouter année devant, c'est pour la légende
+  $row = $res->fetch();
 
-  array_push($temps_parole,$row['temps_parole']);
+  array_push($temps_parole,$row['temps_parole']);//on prends les informations du temps de paroles pour chaque media
 }
 
 $largeur = 600;
-$hauteur = 400;
+$hauteur = 500;
 
 // Initialisation du graphique
 $graph = new Graph($largeur, $hauteur);
@@ -40,17 +40,25 @@ $graph->SetShadow();
 // Titre associé au graphe
 $graph->title->Set("Temps de parole par chaine");
 
+
 // Axe x  ********************************
-//affichage des chaine et separation
 
-$graph->xaxis->SetTickLabels($chaines); $graph->xgrid->Show(true,true);
-
-
+//affiche la legende, ici le nom des medias
+$graph->xaxis->SetTickLabels($chaines);
 
 
-// Create
+//la grille des axes
+$graph->ygrid->Show();
+$graph->xgrid->Show();
+
+
+
+
+// Creation histogramme
 $histo = new BarPlot($temps_parole);//Permet d'avoir l'histogramme
-//$histo->SetLegend($chaine);
+
+
+
 
 
 
@@ -61,24 +69,11 @@ $graph->Add($histo);
 
 
 
-// Spécifier des couleurs personnalisées... #FF0000 ok
-
-
-// Légendes qui accompagnent le graphique, ici chaque chaine avec sa couleur
-
-
-// Position du graphique (0.5=centré)
-
-
-// Type de valeur (pourcentage ou valeurs)
-
-
-
-// Personnalisation des étiquettes pour chaque partie
-
-
-// Personnaliser la police et couleur des étiquettes
+//couleur bleu pour les bars
 $histo->value->SetColor('blue');
+
+//affiche la valeur des temps de paroles
+$histo->value->Show();
 
 // Provoquer l'affichage
 $graph->Stroke();

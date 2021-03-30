@@ -15,7 +15,7 @@
 
     <?php require_once "./header.php";?>
 
-      <h2 class="display-4 text-center"><?php echo $_GET['annee']; ?></h2>
+      <h2 class="display-4 text-center"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
     <div class="container text-center addalinea">
         <!-- TABLEAU ELUES PAR ANNEE -->
         <table class="table">
@@ -30,25 +30,20 @@
                 <?php
 
                   $bdd = getBD_TDP();
-                  $annee=$_GET['annee'];
+                  $annee=$_GET['annee'];//on selectionne pour l'année données la repartitions des elues
                   $rep = $bdd->query('SELECT typeElues, repartitionElues FROM ELUES WHERE ELUES.annee =' .$annee /* formulaire */);
                   $percentage = 100;
                   $isempty = TRUE;
                   while ($ligne = $rep ->fetch()) {
                     $isempty = TRUE;
                     echo '<tr>';
-                    // if ($rep == "") {
-                    //   $message == "Désolé, il n'existe pas de données pour cette année et/ou catégorie";
-                    //   echo $message;
-                    // else {
-                    echo '<td>'.$ligne['typeElues'].'</td>';
-                    // }
-                    echo '<td>'.$ligne['repartitionElues'].' %</td>';
-                    echo '<td>'.($percentage - $ligne['repartitionElues']).' %</td>';
+
+                    echo '<td>'.$ligne['typeElues'].'</td>';//a categorie d'elue
+
+                    echo '<td>'.$ligne['repartitionElues'].' %</td>';//repartition des femmes
+                    echo '<td>'.($percentage - $ligne['repartitionElues']).' %</td>';//repartitions des hommes
                     echo '</tr>';
-                    /* if($isempty){
-                      echo "Désolé, il n'existe pas de données pour cette année et/ou catégorie";
-                    } */
+
                   }
 
 
@@ -57,30 +52,22 @@
 
 
 
-                  // $donnees = array();
-                  // $chaine=array();
-                  // $graphique = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee =' .$annee /* formulaire */);
-                  // $i=0;
-                  // while ($ligne = $graphique ->fetch()) {
-                  //   $donnees['$i']=$ligne['temp_parole'];
-                  //
-                  //   $i+=1;
-                  // }
+
 
 
 
                   ?>
                 <?php
 
-                if(!isset($_POST['submit'])) {
+                if(!isset($_POST['submit'])) { //création d'une chekbox pour choisir les chaines a comparer
                   echo '<br><form method="POST" autocomplete="off">';
-                  echo '<label>Choisissez les chaines que vous souhaitez comparer :</label><br>';
+                  echo '<label>Choisissez les chaines que vous souhaitez comparer (6 max) :</label><br>';
 
                   $bdd = getBD_TDP();
-                  $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');
-                  // echo '<select name="chaines" size="1">'; // try size ="'.$nbAnnee.'"
+                  $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');//on selection les chaines pour les quelles on a une info sur cette année
+
                   while ($chaines = $rep ->fetch()) {
-                    echo '<input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';
+                    echo '<input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';//la chaine est une option en plus + appelle fonction js qui empehce d'en selectionner plus de 6
                   }
                   $rep ->closeCursor();
 
@@ -90,27 +77,27 @@
                   echo '<br>';
                 }
 
-                //tableau avec temps de parole femmes/hommes selon l'année choisie
 
-                else {
+
+                else {//des que le tableau est validé on crée une variable de session pour recupere les chaines afin d'afficher le graphiques correspondant
                   if(isset($_POST['chaine'])){
                     $chainesChoisies = array();
                     foreach ($_POST['chaine'] as $chaine) {
                         echo $chaine.'<br>';
-                        array_push($chainesChoisies, $chaine);
+                        array_push($chainesChoisies, $chaine); //on ajoute la caine dans la session
                       }
 
 
                       $_SESSION['chainesChoisies']=$chainesChoisies;
                       $_SESSION['annee']=$annee;
-                      echo '<div> <img src=graphAnnee.php </div>';
-                      // echo '<div> <img src=graphAnnee.php?annee='.$annee.'</div>';
+                      echo '<div> <img src=graphAnnee.php </div>';// on appelle le graphique qui va se charger selon les chaines cochés
+
                   }
                   else {
                     echo '<br>Pour accéder au graphique, veuillez selectionner au moins une chaine radio/TV<br><br>';
                   }
               }
-              echo '<div> <a href="histoAll.php?annee='.$annee.'"> acceder à toutes les chaines </a></div>';
+              echo '<div> <a href="histoAll.php?annee='.$annee.'" target="_blank"> acceder à toutes les chaines </a></div>'; //lien vers un histogramme affichant toutes les chaines sur un nouvel onglet
                 ?>
 
           </table><br>
@@ -125,11 +112,11 @@
             </thead>
                   <?php
                     $bdd = getBD_TDP();
-                    $rep = $bdd->query('SELECT EcartPrive, EcartPublic FROM Esalaire WHERE Esalaire.annee =' .$annee/* formulaire */);
+                  $rep = $bdd->query('SELECT EcartPrive, EcartPublic FROM Esalaire WHERE Esalaire.annee =' .$annee/* formulaire */); //on cherche l'information des inégalités salariales
                     while ($ligne = $rep ->fetch()) {
                       echo '<tr>';
-                      echo '<td>'.$ligne['EcartPrive'].' %</td>';
-                      echo '<td>'.$ligne['EcartPublic'].' %</td>';
+                      echo '<td>'.$ligne['EcartPrive'].' %</td>';//les ecarts privées
+                      echo '<td>'.$ligne['EcartPublic'].' %</td>';//les ecarts publics
                       echo '</tr>';
                     }
                     $rep ->closeCursor();
@@ -145,12 +132,12 @@
 
 
     <?php require_once "./forum_annee.php";?>
-     <?php if(empty($_SESSION['client'])){
+     <?php if(empty($_SESSION['client'])){//si pas de connexion, on demande la connexion
       echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
     }
 
 
-      else{
+      else{// si connexion on affiche l'espace commentaires
       require_once "./commentaire_annee.php";}?>
     <?php require_once "./footer.php";?>
     <?php require_once "./scriptsjs.php";?>

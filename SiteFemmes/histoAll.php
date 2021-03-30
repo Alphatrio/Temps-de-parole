@@ -6,20 +6,20 @@ include ("src/jpgraph_bar.php");// pour le barplot
 // appel bd
 include 'call_bd.php';
 
-$annee=$_GET['annee'];
-// contenue et legendes
+$annee=$_GET['annee'];//recuparation de l'année
+
 $chaine= array();
 $temps_parole=array();
 $bdd = getBD_TDP(); //connexion BD
 
 $res=$bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee ='.$annee);
 while ($row = $res->fetch()){
-  // Ajouter année devant, c'est pour la légende
+  // Ajoute une chaine et son temps de parole pour une année donnée
   $chaine[] = $row['rnomMed']; $temps_parole[] = $row['temps_parole'];
 }
 
-$largeur = 1000;
-$hauteur = 600;
+$largeur = 1100;
+$hauteur = 1200;
 
 // Initialisation du graphique
 $graph = new Graph($largeur, $hauteur);
@@ -29,22 +29,29 @@ $graph->setScale("textlin");
 // Ajouter une ombre au conteneur
 $graph->SetShadow();
 
+//Fonction utilisé pour mettre le graphique a 90
+$graph->Set90AndMargin(120,30,90,30);
+
 
 
 // Titre associé au graphe
 $graph->title->Set("Temps de parole par chaine");
 
-// Axe x  ********************************
-//affichage des chaine et separation
 
-$graph->xaxis->SetTickLabels($chaine); $graph->xgrid->Show(true,true);
+//nom des medias
+$graph->xaxis->SetTickLabels($chaine);
+//grille des axes
+$graph->xgrid->Show(true,true);
+$graph->xgrid->Show();
 
 
 
 
-// Create
+// Creation histogramme
 $histo = new BarPlot($temps_parole);//Permet d'avoir l'histogramme
-//$histo->SetLegend($chaine);
+
+
+
 
 
 
@@ -55,24 +62,11 @@ $graph->Add($histo);
 
 
 
-// Spécifier des couleurs personnalisées... #FF0000 ok
-
-
-// Légendes qui accompagnent le graphique, ici chaque chaine avec sa couleur
-
-
-// Position du graphique (0.5=centré)
-
-
-// Type de valeur (pourcentage ou valeurs)
-
-
-
-// Personnalisation des étiquettes pour chaque partie
-
-
-// Personnaliser la police et couleur des étiquettes
+//couleur bleu
 $histo->value->SetColor('blue');
+
+//mets les valeurs des temps de paroles
+$histo->value->Show();
 
 // Provoquer l'affichage
 $graph->Stroke();
