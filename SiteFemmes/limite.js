@@ -1,16 +1,16 @@
 function limite(obj)
 {
- var a = document.getElementsByName('chaine[]');
- var j=0;
- for(var i=0;i<a.length;i++)
+ var a = document.getElementsByName('chaine[]');//selection du nom
+ var j=0;// initialisation de j
+ for(var i=0;i<a.length;i++)//boucle sur le nombre d'elements du nom de la chekbox chaine
  {
-   if(a[i].checked) j++;
+   if(a[i].checked) j++; //on incremente j si une case est coché
  }
- if(j>6)
+ if(j>6) //si il y a 6 cases coché
  {
-    alert('Vous avez coché plus de 6 cases');
-    obj.checked=false;
-	return false;
+    alert('Vous avez coché plus de 6 cases');//on affiche une pop up
+    obj.checked=false;//on empeche la classe d'etre coché
+	return false;//on sort de la boucle
  }
  return true;
 }
