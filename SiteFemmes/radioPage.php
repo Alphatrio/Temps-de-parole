@@ -17,6 +17,7 @@
     <body>
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; //recuperation du nom du media?>
+    <div class="container text-center addalinea">
     <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
 
 

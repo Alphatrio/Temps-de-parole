@@ -35,13 +35,27 @@
 
 
 </head>
-<?php if (!(empty($_SESSION['feedBack']))){//si une amelioration est faite
-  $a=$_SESSION['client']['pseudo'];//recuperation pseudo
-  unset($_SESSION['feedBack']);//on detruit la session amelioration
-  echo " <body onload = popup()>"; }//on appelle la pop up
 
- else {//sinon création du body simplement
- 	echo "<body>";}?>
+<!-- essai pop up alternatif qui est bloqué par trop de navigateurs donc abandonné -->
+<?php
+ //  if (!(empty($_SESSION['feedBack']))){//si une amelioration est faite
+ //
+ //  unset($_SESSION['feedBack']);//on detruit la session amelioration
+ //  echo " <body onload = popup()>"; }//on appelle la pop up
+ //
+ // else {//sinon création du body simplement
+ // 	echo "<body>";}
+  ?>
+
+    <?php if (!(empty($_SESSION['feedBack']))){//si une amelioration est faite
+      $a=$_SESSION['client']['pseudo'];//recuperation pseudo
+      unset($_SESSION['feedBack']);//on detruit la session amelioration
+      echo " <body onload = popup1('$a')>"; }//on appelle la pop up
+
+     else {//sinon création du body simplement
+     	echo "<body>";}?>
+
+
 
 
 

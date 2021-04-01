@@ -14,6 +14,7 @@
     <body>
 
     <?php require_once "./header.php";?>
+    <br>
 
       <h2 class="display-4 text-center"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
     <div class="container text-center addalinea">
@@ -83,7 +84,7 @@
                   if(isset($_POST['chaine'])){
                     $chainesChoisies = array();
                     foreach ($_POST['chaine'] as $chaine) {
-                        echo $chaine.'<br>';
+
                         array_push($chainesChoisies, $chaine); //on ajoute la caine dans la session
                       }
 
