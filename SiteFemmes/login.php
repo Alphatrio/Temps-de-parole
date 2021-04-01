@@ -29,7 +29,7 @@
 			</div>
 			<div class="form-row">
 				<div class="col">
-					<input type="text" name="mdp" class="form-control" placeholder="Mot de passe" value="">
+					<input type="password" name="mdp" class="form-control" placeholder="Mot de passe" value="">
 				</div>
 			</div>	
 			<div class="form-row">

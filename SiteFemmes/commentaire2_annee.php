@@ -19,7 +19,9 @@
     }
 
     commentaire($_POST['com'],$_POST['ref'],$_SESSION['client']['pseudo'],date('Y-m-d H:i:s'));
-    echo '<meta http-equiv="Refresh" content="0; URL=index.php"/>';
+    $ref=$_POST['ref'];
+    
+    echo '<meta http-equiv="Refresh" content="0; URL=year.php?annee='.urlencode($ref).'"/>';
 			
             
         ?>

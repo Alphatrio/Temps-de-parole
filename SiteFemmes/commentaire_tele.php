@@ -1,5 +1,5 @@
 <div class="container addtopmargin addbottommargin">
-		<form action="commentaire2.php" method="post" autocomplete="off">
+		<form action="commentaire2_tele.php" method="post" autocomplete="off">
 			<div class="form-row">
 				<div class="col">
 					<p> Votre commentaire : </p>

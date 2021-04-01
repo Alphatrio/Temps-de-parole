@@ -87,7 +87,7 @@
 
 
       else{
-      require_once "./commentaire_media.php"; //appelle de la section commentaire
+      require_once "./commentaire_radio.php"; //appelle de la section commentaire
     }?>
     <?php require_once "./footer.php";?>
 

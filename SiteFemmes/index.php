@@ -25,16 +25,9 @@
 
   <?php require 'call_bd.php' ;?>
   <meta charset="utf-8">
-  <script  >
-   var tempsFermeture = 10;
-   function popup(c) {
-    // ouvre une fenetre sans barre d'etat, ni d'ascenceur
-    w=open("",'popup','width=400,height=200,toolbar=no,scrollbars=no,resizable=yes');
-    w.document.write("<title>"+"Remerciment"+"</title>");
-    w.document.write("<body> Merci "+"a toi"+' '+c+"<br><br>");
-    w.document.write("</body>");
-    setTimeout(w.document.close(), tempsFermeture*5);
-  } </script>
+  
+   <script type="text/javascript" src="popup.js"> </script>
+   
 
   <title>Les Femmes à la TV et à la Radio</title>
 
@@ -42,16 +35,21 @@
 
 
 </head>
-
-<body>
-<?php
-$a=$_SESSION['client']['pseudo'];
-if (!(empty($_SESSION['feedBack']))){
+<?php if (!(empty($_SESSION['feedBack']))){
+  $a=$_SESSION['client']['pseudo'];
   unset($_SESSION['feedBack']);
-  echo "<script > popup('$a'); </script>";
+  echo " <body onload = popup()>"; }
+
+ else {
+ 	echo "<body>";}?>
 
 
-}?>
+
+
+
+
+
+
 
 
 
