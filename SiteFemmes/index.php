@@ -25,9 +25,9 @@
 
   <?php require 'call_bd.php' ;?>
   <meta charset="utf-8">
-  
+
    <script type="text/javascript" src="popup.js"> </script>
-   
+
 
   <title>Les Femmes à la TV et à la Radio</title>
 
@@ -35,12 +35,12 @@
 
 
 </head>
-<?php if (!(empty($_SESSION['feedBack']))){
-  $a=$_SESSION['client']['pseudo'];
-  unset($_SESSION['feedBack']);
-  echo " <body onload = popup()>"; }
+<?php if (!(empty($_SESSION['feedBack']))){//si une amelioration est faite
+  $a=$_SESSION['client']['pseudo'];//recuperation pseudo
+  unset($_SESSION['feedBack']);//on detruit la session amelioration
+  echo " <body onload = popup()>"; }//on appelle la pop up
 
- else {
+ else {//sinon création du body simplement
  	echo "<body>";}?>
 
 
