@@ -14,12 +14,14 @@
     <body>
 
     <?php require_once "./header.php";?>
-    <br>
+    
 
-      <h2 class="display-4 text-center"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
-    <div class="container text-center addalinea">
+      <h2 class="display-4 text-center mb-3"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
+      
+    <div class="container text-center addalinea ">
+        <br>
         <!-- TABLEAU ELUES PAR ANNEE -->
-        <table class="table">
+        <table class="table ">
           <thead class="thead bg-info" >
             <tr>
               <th scope="col">Type d'élues</th>
@@ -68,7 +70,7 @@
                       $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');//on selection les chaines pour les quelles on a une info sur cette année
 
                       echo '<div class="container">
-                              <div class="row equal align-items-start">';
+                              <div class="row" style="text-align:left">';
                       $nbelt = 0;
                       while ($chaines = $rep ->fetch()) {
                         /* if($nbelt = 11){
@@ -79,7 +81,7 @@
                         else{
                           $nbelt+=1;
                         } */
-                        echo '<div class="col-sm-2"><a class="btn btn-sm-3"> <input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'</a></div>';//la chaine est une option en plus + appelle fonction js qui empehce d'en selectionner plus de 6
+                        echo '<div class="col-sm-2 "><a class="btn btn-sm-3"> <input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'</a></div>';//la chaine est une option en plus + appelle fonction js qui empehce d'en selectionner plus de 6
                       }
                       $rep ->closeCursor();
                       echo '</div></div>';
@@ -110,7 +112,7 @@
                     echo '<br>Pour accéder au graphique, veuillez selectionner au moins une chaine radio/TV<br><br>';
                   }
               }
-              echo '<div> <a href="histoAll.php?annee='.$annee.'" target="_blank"> acceder à toutes les chaines </a></div>'; //lien vers un histogramme affichant toutes les chaines sur un nouvel onglet
+              echo '<div> <a class="btn btn btn-outline-dark" href="histoAll.php?annee='.$annee.'" target="_blank"> Voir toutes </a></div><br>'; //lien vers un histogramme affichant toutes les chaines sur un nouvel onglet
                 ?>
 
           </table><br>

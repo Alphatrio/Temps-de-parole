@@ -18,7 +18,7 @@
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; //recuperation du nom du media?>
     <div class="container text-center addalinea">
-    <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
+    <?php   echo '<div class="container"> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
 
 
     <h2 class="display-4 text-center"><?php echo $radio; //affichage du nom du media ?></h2>
@@ -39,7 +39,7 @@
           $nbAnnee = $rep ->fetch();
           echo '<select class="selectRadioTV" name="anneeRadio" size="1">'; // try size ="'.$nbAnnee.'"
           $rep ->closeCursor();
-// FIN DE LA PARTIE EN QUESTIO
+// FIN DE LA PARTIE EN QUESTION
 
           //recuperation des années pour les quelles on a des informations sur cette chaine pour le formulaire de choix
           $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" ORDER BY annee ASC');
@@ -80,7 +80,9 @@
       ?>
       </div>
     </div>
+    
     <br> <br>
+
     <?php require_once "./forum_media.php";?>
     <?php if(empty($_SESSION['client'])){//si aucune session client n'est crée on demande de se connecter pour laisser un com
       echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
@@ -90,7 +92,8 @@
       else{
       require_once "./commentaire_radio.php"; //appelle de la section commentaire
     }?>
-    <?php require_once "./footer.php";?>
+      <?php require_once "./footer.php";?>
+    
 
 
 

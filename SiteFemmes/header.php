@@ -22,7 +22,7 @@
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" href="index.php"><i class="fas fa-calendar-alt"></i> Home<span class="sr-only"></span></a>
+						<a class="nav-link active" href="index.php"><i class="fas fa-calendar-alt"></i> Années<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item">
 						<a  class="nav-link" href="radio.php"><i class="fas fa-broadcast-tower"></i> Radio  </a>

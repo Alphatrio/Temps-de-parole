@@ -80,7 +80,7 @@
               <?php
                 $bdd = getBD_TDP();
                 $rep = $bdd->query('SELECT annee FROM Esalaire ORDER BY annee DESC');
-                echo '<div class="container">
+                echo '<div class="container mt-4">
                           <div class="row equal align-items-start">';
                             
                 while ($ligne = $rep ->fetch()) {

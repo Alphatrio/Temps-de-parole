@@ -30,7 +30,7 @@
         </tr>
       </div>
             <?php
-              echo '<div class="container">
+              echo '<div class="container mt-4">
                 <div class="row equal align-items-start">';
               $bdd = getBD_TDP();
               $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "radio" ORDER BY rnomMed ASC/* formulaire */');
