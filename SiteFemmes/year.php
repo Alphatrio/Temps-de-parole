@@ -58,25 +58,37 @@
 
 
                   ?>
-                <?php
+                    <?php
 
-                if(!isset($_POST['submit'])) { //création d'une chekbox pour choisir les chaines a comparer
-                  echo '<br><form method="POST" autocomplete="off">';
-                  echo '<label>Choisissez les chaines que vous souhaitez comparer (6 max) :</label><br>';
+                    if(!isset($_POST['submit'])) { //création d'une chekbox pour choisir les chaines a comparer
+                      echo '<br><form method="POST" autocomplete="off">';
+                      echo '<label>Choisissez les chaines que vous souhaitez comparer (6 max) :</label><br>';
 
-                  $bdd = getBD_TDP();
-                  $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');//on selection les chaines pour les quelles on a une info sur cette année
+                      $bdd = getBD_TDP();
+                      $rep = $bdd->query('SELECT * FROM MEDIA WHERE MEDIA.annee = "'.$annee.'"');//on selection les chaines pour les quelles on a une info sur cette année
 
-                  while ($chaines = $rep ->fetch()) {
-                    echo '<input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'<br>';//la chaine est une option en plus + appelle fonction js qui empehce d'en selectionner plus de 6
-                  }
-                  $rep ->closeCursor();
+                      echo '<div class="container">
+                              <div class="row equal align-items-start">';
+                      $nbelt = 0;
+                      while ($chaines = $rep ->fetch()) {
+                        /* if($nbelt = 11){
+                          echo '<div class="row"></div>';
+                          $nbelt = 0;
 
-                  // echo '</select><br><br>';
-                  echo '<br><input class="btn btn-dark" type="submit" name="submit" value="Valider"><br>';
-                  echo '</form>';
-                  echo '<br>';
-                }
+                        }
+                        else{
+                          $nbelt+=1;
+                        } */
+                        echo '<div class="col-sm-2"><a class="btn btn-sm-3"> <input type="checkbox"  onclick="limite(this)" name="chaine[]" value="'.$chaines['rnomMed'].'"> '.$chaines['rnomMed'].'</a></div>';//la chaine est une option en plus + appelle fonction js qui empehce d'en selectionner plus de 6
+                      }
+                      $rep ->closeCursor();
+                      echo '</div></div>';
+
+                      // echo '</select><br><br>';
+                      echo '<br><input class="btn btn-dark" type="submit" name="submit" value="Valider"><br>';
+                      echo '</form>';
+                      echo '<br>';
+                    }
 
 
 

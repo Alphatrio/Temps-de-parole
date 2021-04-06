@@ -30,14 +30,17 @@
         </tr>
       </div>
             <?php
+              echo '<div class="container">
+                <div class="row equal align-items-start">';
               $bdd = getBD_TDP();
               $rep = $bdd->query('SELECT DISTINCT rnomMed FROM MEDIA WHERE MEDIA.typeMed = "radio" ORDER BY rnomMed ASC/* formulaire */');
               while ($ligne = $rep ->fetch()) {
                 echo '<tr>';
-                echo '<a class="list-group-item list-group-item-action" href="radioPage.php?rnomMed='.$ligne['rnomMed'].'">'.$ligne['rnomMed'].' </a>';
+                echo '<div class="col-md-4"><a class="list-group-item list-group-item-action" href="radioPage.php?rnomMed='.$ligne['rnomMed'].'">'.$ligne['rnomMed'].' </a></div>';
                 echo '</tr>';
               }
               $rep ->closeCursor();
+              echo '</div></div>';
             ?>
       
     </div><br>

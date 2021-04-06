@@ -80,13 +80,16 @@
               <?php
                 $bdd = getBD_TDP();
                 $rep = $bdd->query('SELECT annee FROM Esalaire ORDER BY annee DESC');
+                echo '<div class="container">
+                          <div class="row equal align-items-start">';
+                            
                 while ($ligne = $rep ->fetch()) {
-                  echo '<tr>';
-                  echo '<a class="list-group-item list-group-item-action" href="year.php?annee='.$ligne['annee'].'">'.$ligne['annee'].'</a>';
-                  echo '</tr>';
+                   echo '<tr><div class="col-md-4"><a class="list-group-item list-group-item-action" href="year.php?annee='.$ligne['annee'].'">'.$ligne['annee'].'</a></div>';
+                   echo '</tr>';
                 }
                 $rep ->closeCursor();
-
+                
+                echo '</div></div>';
 
               ?>
         </div>
