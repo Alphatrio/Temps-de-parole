@@ -17,11 +17,12 @@
     <body>
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; //recuperation du nom du media?>
-    <div class="container text-center addalinea">
-    <?php   echo '<div class="container"> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
-
-
+    
     <h2 class="display-4 text-center"><?php echo $radio; //affichage du nom du media ?></h2>
+    <?php   echo '<div class="container"> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' class="img-fluid" </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
+
+
+    
     <div class = "maindiv">
       <div class="container text-center addalinea">
 
@@ -80,12 +81,13 @@
       ?>
       </div>
     </div>
+    </div>
     
     <br> <br>
 
     <?php require_once "./forum_media.php";?>
     <?php if(empty($_SESSION['client'])){//si aucune session client n'est crée on demande de se connecter pour laisser un com
-      echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
+      echo '<div class="container"><div class="alert alert-warning" role="alert"> Veuillez être connecté pour laisser un commentaire </div></div>';
     }
 
 

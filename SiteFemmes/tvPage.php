@@ -19,7 +19,7 @@
     <div class="container text-center addalinea">
 
 
-      <?php   echo '<div> <img src=courbeMedia.php?rnomMed='.urlencode($tv).' </div>'; //appelle de la courbe de l'evolution du temps de parole?>
+      <?php   echo '<div> <img  src=courbeMedia.php?rnomMed='.urlencode($tv).' class="img-fluid" </div>'; //appelle de la courbe de l'evolution du temps de parole?>
 
       <?php //création d'un formulaire de choix pour afficher les informations d'une année choisie
       if(!isset($_POST['submit'])) {
@@ -77,7 +77,7 @@
 
     <?php require_once "./forum_media.php";?>
     <?php if(empty($_SESSION['client'])){//si aucune session client n'est crée on demande de se connecter pour laisser un com
-      echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
+      echo '<div class="container"><div class="alert alert-warning" role="alert"> Veuillez être connecté pour laisser un commentaire </div></div>';
     }
 
 

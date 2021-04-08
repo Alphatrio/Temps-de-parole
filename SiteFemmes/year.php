@@ -49,16 +49,6 @@
 
                   }
 
-
-
-
-
-
-
-
-
-
-
                   ?>
                     <?php
 
@@ -105,13 +95,15 @@
 
                       $_SESSION['chainesChoisies']=$chainesChoisies;
                       $_SESSION['annee']=$annee;
-                      echo '<div> <img src=graphAnnee.php </div>';// on appelle le graphique qui va se charger selon les chaines cochés
+                      echo '<div> <img src=graphAnnee.php class="img-fluid" </div>';// on appelle le graphique qui va se charger selon les chaines cochés
 
                   }
                   else {
                     echo '<br>Pour accéder au graphique, veuillez selectionner au moins une chaine radio/TV<br><br>';
                   }
               }
+
+            
               echo '<div> <a class="btn btn btn-outline-dark" href="histoAll.php?annee='.$annee.'" target="_blank"> Voir toutes </a></div><br>'; //lien vers un histogramme affichant toutes les chaines sur un nouvel onglet
                 ?>
 
@@ -148,7 +140,7 @@
 
     <?php require_once "./forum_annee.php";?>
      <?php if(empty($_SESSION['client'])){//si pas de connexion, on demande la connexion
-      echo "<p> Veuillez être connecté pour laisser un commentaire </p>";
+     echo '<div class="container"><div class="alert alert-warning" role="alert"> Veuillez être connecté pour laisser un commentaire </div></div>';
     }
 
 
