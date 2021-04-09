@@ -14,10 +14,10 @@
     <body>
 
     <?php require_once "./header.php";?>
-    
+
 
       <h2 class="display-4 text-center mb-3"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
-      
+
     <div class="container text-center addalinea ">
         <br>
         <!-- TABLEAU ELUES PAR ANNEE -->
@@ -32,22 +32,64 @@
 
                 <?php
 
-                  $bdd = getBD_TDP();
-                  $annee=$_GET['annee'];//on selectionne pour l'année données la repartitions des elues
-                  $rep = $bdd->query('SELECT typeElues, repartitionElues FROM ELUES WHERE ELUES.annee =' .$annee /* formulaire */);
-                  $percentage = 100;
-                  $isempty = TRUE;
-                  while ($ligne = $rep ->fetch()) {
-                    $isempty = TRUE;
-                    echo '<tr>';
+                $percentage=100;
 
-                    echo '<td>'.$ligne['typeElues'].'</td>';//a categorie d'elue
 
-                    echo '<td>'.$ligne['repartitionElues'].' %</td>';//repartition des femmes
-                    echo '<td>'.($percentage - $ligne['repartitionElues']).' %</td>';//repartitions des hommes
-                    echo '</tr>';
+                $elues=array();//création tableau type elue
+                $bdd = getBD_TDP();
+                $annee=$_GET['annee'];//on selectionne pour l'année données la repartitions des elues
+                $sql='SELECT DISTINCT typeElues FROM `elues`';
+                $rep = $bdd->query($sql);
+
+                while ($ligne = $rep ->fetch()) {
+                  array_push($elues,$ligne['typeElues']);//ici on remplis le tableau pour chaque type d'elues
+
 
                   }
+
+                $percentage=100;
+
+                foreach ($elues as $elue) {//pour chaque type d'elues
+
+                  $sql='SELECT * from elues where typeElues="'.$elue.'" and annee='.$annee.'';//on selectionne l'information
+                  $rep = $bdd->query($sql);
+                  $ligne=$rep->fetch();
+                  $a=$annee;
+
+
+
+
+                  while($ligne==NULL){//tant qu'on a pas l'info
+
+
+
+                      $a=$a-1;//on regarde un an en arriere
+
+                      $sql='SELECT * from elues where typeElues="'.$elue.'" and annee='.$a.'';
+                      $rep = $bdd->query($sql);
+                      $ligne= $rep->fetch();
+
+
+
+
+
+
+                    }
+                //sorti des boucles on a l'info qu'on souhaite
+                $homme=$percentage-$ligne['repartitionElues'];
+
+
+                echo '<tr>';
+
+                echo '<td>'.$elue.'</td>';//a categorie d'elue
+
+                echo '<td>'.$ligne['repartitionElues'].' %</td>';//repartition des femmes
+                echo '<td>'.$homme.' %</td>';//repartitions des hommes
+                echo '</tr>';
+
+
+
+}
 
                   ?>
                     <?php
@@ -103,7 +145,7 @@
                   }
               }
 
-            
+
               echo '<div> <a class="btn btn btn-outline-dark" href="histoAll.php?annee='.$annee.'" target="_blank"> Voir toutes </a></div><br>'; //lien vers un histogramme affichant toutes les chaines sur un nouvel onglet
                 ?>
 

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 29, 2021 at 11:25 AM
--- Server version: 5.7.24
--- PHP Version: 7.4.1
+-- Host: localhost:8889
+-- Generation Time: Apr 09, 2021 at 08:23 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -50,7 +48,62 @@ CREATE TABLE `amelioration` (
 
 INSERT INTO `amelioration` (`idAmelioration`, `amelioration_texte`) VALUES
 (1, ' '),
-(2, ' ');
+(2, ' '),
+(3, ' p'),
+(4, ' '),
+(5, ' '),
+(6, ' '),
+(7, ' az'),
+(8, ' a'),
+(9, '& '),
+(10, ' a'),
+(11, ' a'),
+(12, ' a'),
+(13, ' f'),
+(14, ' r'),
+(15, ' e'),
+(16, 'r '),
+(17, ' z'),
+(18, 'h '),
+(19, 'e '),
+(20, ' a'),
+(21, ' rez'),
+(22, ' z'),
+(23, ' z'),
+(24, ' e'),
+(25, ' e'),
+(26, ' a'),
+(27, ' a'),
+(28, ' e'),
+(29, ' z'),
+(30, ' z'),
+(31, ' e'),
+(32, ' r'),
+(33, ' h'),
+(34, ' ez'),
+(35, ' e'),
+(36, ' aze'),
+(37, ' d'),
+(38, ' z'),
+(39, ' eze'),
+(40, 'ce '),
+(41, ' je propose une amelioration'),
+(42, ' f'),
+(43, 'r '),
+(44, 'e '),
+(45, ' e'),
+(46, ' e'),
+(47, ' de'),
+(48, ' ds'),
+(49, ' d'),
+(50, ' s'),
+(51, 'rt '),
+(52, ' ft('),
+(53, ' t'),
+(54, ' z'),
+(55, ' z'),
+(56, ' d'),
+(57, ' df');
 
 -- --------------------------------------------------------
 
@@ -94,7 +147,15 @@ CREATE TABLE `commentaire` (
 
 INSERT INTO `commentaire` (`idCom`, `commentaire_texte`, `ref`, `pseudo`, `dateCom`) VALUES
 (2, ' Test', '1995', 'Alphatrio', '2021-03-29 10:21:34'),
-(3, ' Test 2', '1995', 'Alphatrio', '2021-03-29 11:11:26');
+(3, ' Test 2', '1995', 'Alphatrio', '2021-03-29 11:11:26'),
+(4, ' sd', '2001', 'leboss', ''),
+(5, ' sd', '2015', 'leboss', ''),
+(6, ' a', 'Europe 1', 'leboss', ''),
+(7, ' zz', '2011', 'leboss', ''),
+(8, ' po', '2001', 'leboss', ''),
+(9, ' dc', '2017', 'Alphatrio', '2021-04-01 09:36:23'),
+(10, ' tr', '2017', 'Alphatrio', '2021-04-01 10:47:04'),
+(11, ' and', 'cherie fm', 'Alphatrio', '2021-04-08 21:09:49');
 
 -- --------------------------------------------------------
 
@@ -122,13 +183,13 @@ INSERT INTO `elues` (`idElues`, `typeElues`, `repartitionElues`, `annee`) VALUES
 (6, 'Sénateurs', 21.9, 2008),
 (7, 'Sénateurs', 22.1, 2011),
 (8, 'Sénateurs', 25, 2014),
-(9, 'Senateur', 32.1, 2017),
-(10, 'Deputés', 6, 1993),
+(9, 'Sénateurs', 32.1, 2017),
+(10, 'Députés', 6, 1993),
 (11, 'Députés', 11, 1997),
 (12, 'Députés', 12.3, 2002),
 (13, 'Députés', 18.5, 2007),
 (14, 'Députés', 26.9, 2012),
-(15, 'Deputes', 38.8, 2017),
+(15, 'Députes', 38.8, 2017),
 (16, 'Conseillers régionaux', 12, 1992),
 (17, 'Conseillers régionaux', 27.1, 1998),
 (18, 'Conseillers régionaux', 47.6, 2004),
@@ -1011,13 +1072,13 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `amelioration`
 --
 ALTER TABLE `amelioration`
-  MODIFY `idAmelioration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idAmelioration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `utilisateur`
@@ -1049,7 +1110,6 @@ ALTER TABLE `a_commente`
 ALTER TABLE `a_propose_amelioration`
   ADD CONSTRAINT `a_propose_amelioration_ibfk_1` FOREIGN KEY (`idUtil`) REFERENCES `utilisateur` (`idUtilisateur`),
   ADD CONSTRAINT `a_propose_amelioration_ibfk_2` FOREIGN KEY (`idAmelioration`) REFERENCES `amelioration` (`idAmelioration`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
