@@ -15,7 +15,7 @@
 
     <?php $tv = $_GET['rnomMed']; //recuperation du nom du media ?>
 
-    <h2 class="display-4 text-center"><?php echo $tv; //affichage du nom du media?></h2>
+    <h2 class="display-4 text-center bg-danger text-white"><?php echo $tv; //affichage du nom du media?></h2>
     <div class="container text-center addalinea">
 
 
@@ -26,13 +26,14 @@
         echo '<form method="post" autocomplete="off">';
         echo '<label>Choisissez une année :</label><br>';
 
-//A QUOI SERT CETTE PARTIE ?
+//A QUOI SERT CETTE PARTIE ? Apparemment elle sert
+
         $bdd = getBD_TDP();
         $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$tv.'"');
         $nbAnnee = $rep ->fetch();
         echo '<select class="selectRadioTV" name="anneeTV" size="1">'; // try size ="'.$nbAnnee.'"
         $rep ->closeCursor();
-// FIN DE LA PARTIE EN QUESTIO
+// FIN DE LA PARTIE EN QUESTION
 
         //recuperation des années pour les quelles on a des informations sur cette chaine pour le formulaire de choix
         $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$tv.'" ORDER BY annee ASC');
@@ -50,7 +51,7 @@
 
       else {
         $anneeTV = $_POST['anneeTV']; //on recupere l'année choisie et on l'affiche
-        echo '<p class="anneeMediaChoisi">'.$anneeTV.'</p>';
+        echo '<h2>'.$anneeTV.'</h2>';
         echo '<table class="table">';//création d'un tableau
         echo '<thead class="thead bg-danger">';
         echo '  <tr>';
@@ -70,13 +71,14 @@
           echo '</table><br>';
         $rep ->closeCursor();
         echo'<table class="table ">';
-        echo'  <thead class="thead bg-info" >';
+        echo'  <thead class="thead bg-danger" >';
         echo'    <tr>';
         echo"      <th scope='col'>Type d'élues</th>";
         echo'      <th scope="col">% femmes</th>';
         echo'      <th scope="col">% hommes</th>';
         echo'    </tr>';
         echo'  </thead>';
+        
 
 
 
@@ -144,7 +146,7 @@
                 $rep ->closeCursor();
 
                 echo'<table class="table">';
-                echo'  <thead class="thead bg-info">';
+                echo'  <thead class="thead bg-danger">';
                 echo'    <tr>';
                 echo'      <th scope="col">Écart salarial dans le privé</th>';
                 echo'      <th scope="col">Écart salarial dans le public</th>';
@@ -158,9 +160,10 @@
                       echo '<td>'.$ligne['EcartPrive'].' %</td>';//les ecarts privées
                       echo '<td>'.$ligne['EcartPublic'].' %</td>';//les ecarts publics
                       echo '</tr>';
+                      
                           }
                           $rep ->closeCursor();
-
+                echo '</table>';
     }
     ?>
       </div>

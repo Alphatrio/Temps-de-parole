@@ -18,7 +18,7 @@
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; //recuperation du nom du media?>
 
-    <h2 class="display-4 text-center"><?php echo $radio; //affichage du nom du media ?></h2>
+    <h2 class="display-4 text-center bg-success text-white"><?php echo $radio; //affichage du nom du media ?></h2>
     <?php   echo '<div class="container"> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' class="img-fluid" </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
 
 
@@ -34,11 +34,15 @@
           echo '<form method="post" autocomplete="off">';
           echo '<label>Choisissez une année :</label><br>';
 
-
-
+  //A QUOI SERT CETTE PARTIE ?
+          $bdd = getBD_TDP();
+          $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'"');
+          $nbAnnee = $rep ->fetch();
+          echo '<select class="selectRadioTV" name="anneeTV" size="1">'; // try size ="'.$nbAnnee.'"
+          $rep ->closeCursor();
+  // FIN DE LA PARTIE EN QUESTION
 
           //recuperation des années pour les quelles on a des informations sur cette chaine pour le formulaire de choix
-          $bdd = getBD_TDP();
           $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" ORDER BY annee ASC');
           while ($ligne = $rep ->fetch()) {
             echo '<option>'.$ligne['annee'].'</option>';//chaque année est une option
@@ -53,9 +57,9 @@
 
 
         else {
-          $anneeRadio = $_POST['anneeRadio']; //on recupere l'année choisie et on l'affiche
-          echo '<p class="anneeMediaChoisi">'.$anneeRadio.'</p>'; //création d'un tableau
-          echo '<table class="table">';
+          $anneeRadio = $_POST['anneeTV']; //on recupere l'année choisie et on l'affiche
+          echo '<h2">'.$anneeRadio.'</h2>';
+          echo '<table class="table">';//création d'un tableau
           echo '<thead class="thead bg-success">';
           echo '  <tr>';
           echo '    <th scope="col">Temps de parole : femmes</th>';
@@ -74,7 +78,7 @@
             echo '</table><br>';
           $rep ->closeCursor();
           echo'<table class="table ">';
-          echo'  <thead class="thead bg-info" >';
+          echo'  <thead class="thead bg-success" >';
           echo'    <tr>';
           echo"      <th scope='col'>Type d'élues</th>";
           echo'      <th scope="col">% femmes</th>';
@@ -148,7 +152,7 @@
                   $rep ->closeCursor();
 
                   echo'<table class="table">';
-                  echo'  <thead class="thead bg-info">';
+                  echo'  <thead class="thead bg-success">';
                   echo'    <tr>';
                   echo'      <th scope="col">Écart salarial dans le privé</th>';
                   echo'      <th scope="col">Écart salarial dans le public</th>';
@@ -164,8 +168,8 @@
                         echo '</tr>';
                             }
                             $rep ->closeCursor();
-      }
-
+                          }
+                  echo '</table>';
       ?>
       </div>
     </div>
