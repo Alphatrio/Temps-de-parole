@@ -47,10 +47,20 @@
  // 	echo "<body>";}
   ?>
 
-    <?php if (!(empty($_SESSION['feedBack']))){//si une amelioration est faite
-      $a=$_SESSION['client']['pseudo'];//recuperation pseudo
-      unset($_SESSION['feedBack']);//on detruit la session amelioration
-      echo " <body onload = popup1('$a')>"; }//on appelle la pop up
+    <?php 
+
+
+      if (!(empty($_SESSION['inscription']))) { // Si une inscription est faite
+        unset($_SESSION['inscription']); // On détruit la session inscription 
+        echo "<body onload = popup_inscription()>"; // on appelle la popup inscription 
+      }
+      
+      if (!(empty($_SESSION['feedBack']))){//si une amelioration est faite
+        $a=$_SESSION['client']['pseudo'];//recuperation pseudo
+        unset($_SESSION['feedBack']);//on detruit la session amelioration
+        echo " <body onload = popup1('$a')>"; }//on appelle la pop up
+
+      
 
      else {//sinon création du body simplement
      	echo "<body>";}?>

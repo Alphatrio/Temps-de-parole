@@ -26,3 +26,7 @@ http://www.trucsweb.com/tutoriels/javascript/tw85/
 function popup1(c){
   alert('merci pour votre commentaire '+c);
 }
+
+function popup_inscription(){
+  alert('Vous êtes desormais inscrits !');
+}

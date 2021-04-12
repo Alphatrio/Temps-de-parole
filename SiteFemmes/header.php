@@ -25,10 +25,10 @@
 						<a class="nav-link active" href="index.php"><i class="fas fa-calendar-alt"></i> Années<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item">
-						<a  class="nav-link" href="radio.php"><i class="fas fa-broadcast-tower"></i> Radio  </a>
+						<a  class="nav-link" href="radio.php"><i class="fas fa-broadcast-tower"></i> Radios  </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="tele.php"><i class="fas fa-tv"></i> Télévision</a>
+						<a class="nav-link" href="tele.php"><i class="fas fa-tv"></i> Télévisions</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
