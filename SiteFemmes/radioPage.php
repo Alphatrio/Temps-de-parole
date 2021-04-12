@@ -17,12 +17,12 @@
     <body>
     <?php require_once "./header.php";?>
     <?php $radio = $_GET['rnomMed']; //recuperation du nom du media?>
-    
-    <h2 class="display-4 text-center"><?php echo $radio; //affichage du nom du media ?></h2>
+
+    <h2 class="display-4 text-center bg-success text-white"><?php echo $radio; //affichage du nom du media ?></h2>
     <?php   echo '<div class="container"> <img src=courbeMedia.php?rnomMed='.urlencode($radio).' class="img-fluid" </div>'; //appelle de la courbe de l'evolution du temps de parole ?>
 
 
-    
+
     <div class = "maindiv">
       <div class="container text-center addalinea">
 
@@ -34,13 +34,13 @@
           echo '<form method="post" autocomplete="off">';
           echo '<label>Choisissez une année :</label><br>';
 
-//A QUOI SERT CETTE PARTIE ?
+  //A QUOI SERT CETTE PARTIE ?
           $bdd = getBD_TDP();
           $rep = $bdd->query('SELECT COUNT(annee) FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'"');
           $nbAnnee = $rep ->fetch();
-          echo '<select class="selectRadioTV" name="anneeRadio" size="1">'; // try size ="'.$nbAnnee.'"
+          echo '<select class="selectRadioTV" name="anneeTV" size="1">'; // try size ="'.$nbAnnee.'"
           $rep ->closeCursor();
-// FIN DE LA PARTIE EN QUESTION
+  // FIN DE LA PARTIE EN QUESTION
 
           //recuperation des années pour les quelles on a des informations sur cette chaine pour le formulaire de choix
           $rep = $bdd->query('SELECT annee FROM MEDIA WHERE MEDIA.rnomMed = "'.$radio.'" ORDER BY annee ASC');
@@ -57,9 +57,9 @@
 
 
         else {
-          $anneeRadio = $_POST['anneeRadio']; //on recupere l'année choisie et on l'affiche
-          echo '<p class="anneeMediaChoisi">'.$anneeRadio.'</p>'; //création d'un tableau
-          echo '<table class="table">';
+          $anneeRadio = $_POST['anneeTV']; //on recupere l'année choisie et on l'affiche
+          echo '<h2">'.$anneeRadio.'</h2>';
+          echo '<table class="table">';//création d'un tableau
           echo '<thead class="thead bg-success">';
           echo '  <tr>';
           echo '    <th scope="col">Temps de parole : femmes</th>';
@@ -77,12 +77,104 @@
             echo '</tr>';
             echo '</table><br>';
           $rep ->closeCursor();
-      }
+          echo'<table class="table ">';
+          echo'  <thead class="thead bg-success" >';
+          echo'    <tr>';
+          echo"      <th scope='col'>Type d'élues</th>";
+          echo'      <th scope="col">% femmes</th>';
+          echo'      <th scope="col">% hommes</th>';
+          echo'    </tr>';
+          echo'  </thead>';
+
+
+
+                  $percentage=100;
+
+
+                  $elues=array();//création tableau type elue
+                  $bdd = getBD_TDP();
+                  $annee=$anneeRadio;//on selectionne pour l'année données la repartitions des elues
+                  $sql='SELECT DISTINCT typeElues FROM `elues`';
+                  $rep = $bdd->query($sql);
+
+                  while ($ligne = $rep ->fetch()) {
+                    array_push($elues,$ligne['typeElues']);//ici on remplis le tableau pour chaque type d'elues
+
+
+                    }
+
+                  $percentage=100;
+
+                  foreach ($elues as $elue) {//pour chaque type d'elues
+
+                    $sql='SELECT * from elues where typeElues="'.$elue.'" and annee='.$annee.'';//on selectionne l'information
+                    $rep = $bdd->query($sql);
+                    $ligne=$rep->fetch();
+                    $a=$annee;
+
+
+
+
+                    while($ligne==NULL){//tant qu'on a pas l'info
+
+
+
+                        $a=$a-1;//on regarde un an en arriere
+
+                        $sql='SELECT * from elues where typeElues="'.$elue.'" and annee='.$a.'';
+                        $rep = $bdd->query($sql);
+                        $ligne= $rep->fetch();
+
+
+
+
+
+
+                      }
+                  //sorti des boucles on a l'info qu'on souhaite
+                  $homme=$percentage-$ligne['repartitionElues'];
+
+
+                  echo '<tr>';
+
+                  echo '<td>'.$elue.'</td>';//a categorie d'elue
+
+                  echo '<td>'.$ligne['repartitionElues'].' %</td>';//repartition des femmes
+                  echo '<td>'.$homme.' %</td>';//repartitions des hommes
+                  echo '</tr>';
+
+
+
+
+  }
+                  echo'</table>';
+
+                  $rep ->closeCursor();
+
+                  echo'<table class="table">';
+                  echo'  <thead class="thead bg-success">';
+                  echo'    <tr>';
+                  echo'      <th scope="col">Écart salarial dans le privé</th>';
+                  echo'      <th scope="col">Écart salarial dans le public</th>';
+                  echo'    </tr>';
+                  echo'  </thead>';
+
+                  $bdd = getBD_TDP();
+                  $rep = $bdd->query('SELECT EcartPrive, EcartPublic FROM Esalaire WHERE Esalaire.annee =' .$annee/* formulaire */); //on cherche l'information des inégalités salariales
+                  while ($ligne = $rep ->fetch()) {
+                        echo '<tr>';
+                        echo '<td>'.$ligne['EcartPrive'].' %</td>';//les ecarts privées
+                        echo '<td>'.$ligne['EcartPublic'].' %</td>';//les ecarts publics
+                        echo '</tr>';
+                            }
+                            $rep ->closeCursor();
+                          }
+                  echo '</table>';
       ?>
       </div>
     </div>
     </div>
-    
+
     <br> <br>
 
     <?php require_once "./forum_media.php";?>
@@ -95,7 +187,7 @@
       require_once "./commentaire_radio.php"; //appelle de la section commentaire
     }?>
       <?php require_once "./footer.php";?>
-    
+
 
 
 

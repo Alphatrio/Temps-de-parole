@@ -1,11 +1,34 @@
 
 
-
+	<div id= "endofpage"></div>
+	
 
 
 	<div class="mb-5"></div>
 	<!-- Fixed Footer  -->
-	<footer class="bg-dark text-center text-white myfooter">
+	<footer id ="footer" class="bg-dark text-center text-white myfooter">
+
+	<!-- <script> // Pour faire en sorte que le footer tombe toujours en bas de page mais selon le scalling de l'os ça marche pas du coup rip 4h de ma vie
+	
+		var end = $( "#endofpage" );
+		var position = end.position();
+		var screenheight = <?php echo json_encode($_SESSION['screen_height']); ?>;
+		//alert(position.top);
+		//alert(screenheight);
+		if( 0.95*screenheight >= position.top){
+			if(document.getElementById("com") == null){
+				//alert("bla");
+				var footer = $( "#footer" );
+				//footer.addClass("position-sticky-bottom");
+				footer.css("position","fixed");
+				footer.css("bottom","0px");
+				//footer.css("text-align","center");
+				footer.css("width" ,"100%");
+			}
+		}
+	</script> -->
+		
+
 	  <!-- Grid container -->
 	  <div class="container p-4">
 		<!-- Section: Social media -->

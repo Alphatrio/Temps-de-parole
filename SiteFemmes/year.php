@@ -16,7 +16,7 @@
     <?php require_once "./header.php";?>
 
 
-      <h2 class="display-4 text-center mb-3"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
+      <h2 class="display-4 text-center mb-3 bg-info text-white"><?php echo $_GET['annee'];//recuperation de l'année ?></h2>
 
     <div class="container text-center addalinea ">
         <br>
