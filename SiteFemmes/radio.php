@@ -17,18 +17,16 @@
 
   <div class = "maindiv">
     <div class="list-group text-center">
-      <div class="list-group-item list-group-item-action active bg-success  border-0 rounded-0">
         <tr>
           <?php
             $bdd = getBD_TDP();
             $rep = $bdd->query('SELECT  COUNT(DISTINCT rnomMed) FROM MEDIA WHERE MEDIA.typeMed = "radio"');
             $count = $rep ->fetch();
             // var_dump($count);
-              echo '<div class="list-group-item list-group-item-action active disabled bg-success border-0">Radios ('.$count[0].')</div>';
+              echo '<h4 class="list-group-item list-group-item-action active disabled bg-success border-0">Radios ('.$count[0].')</h4>';
             $rep ->closeCursor();
           ?>
         </tr>
-      </div>
             <?php
               echo '<div class="container mt-4">
                 <div class="row equal align-items-start">';
@@ -42,17 +40,10 @@
               $rep ->closeCursor();
               echo '</div></div>';
             ?>
-      
-    </div><br>
 
+    </div><br><br><br><br>
 
 	<?php require_once "./footer.php";?>
-
-
-
-
-
-
   <?php require_once "./scriptsjs.php";?>
 </body>
 </html>

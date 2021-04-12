@@ -13,7 +13,6 @@
 <body>
 	<?php require_once "./header.php";?>
 
-
 	<div class="container addtopmargin addbottommargin">
 		<form action="registration.php" method="post" autocomplete="off">
 			<div class="form-row">
@@ -35,7 +34,7 @@
 				<div class="col">
           <input type="password" name="mdp2" class="form-control" placeholder="Confirmez le mot de passe" value=""/>
 				</div>
-			</div>
+			</div><br>
 			<div class="form-row">
 				<div class="col offset-0.1 ">
 					<button type="submit" class="btn btn-outline-dark btn-floating m-1">Submit</button>
@@ -47,9 +46,6 @@
 
 
 	</div>
-
-
-
 
 	<?php require_once "./footer.php";?>
 	<?php require_once "./scriptsjs.php";?>

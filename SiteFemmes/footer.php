@@ -1,15 +1,11 @@
-
-
 	<div id= "endofpage"></div>
 	
-
-
 	<div class="mb-5"></div>
 	<!-- Fixed Footer  -->
 	<footer id ="footer" class="bg-dark text-center text-white myfooter">
 
 	<!-- <script> // Pour faire en sorte que le footer tombe toujours en bas de page mais selon le scalling de l'os ça marche pas du coup rip 4h de ma vie
-	
+
 		var end = $( "#endofpage" );
 		var position = end.position();
 		var screenheight = <?php echo json_encode($_SESSION['screen_height']); ?>;
@@ -27,7 +23,7 @@
 			}
 		}
 	</script> -->
-		
+
 
 	  <!-- Grid container -->
 	  <div class="container p-4">

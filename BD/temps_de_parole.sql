@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 09, 2021 at 08:23 PM
+-- Generation Time: Apr 12, 2021 at 05:42 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `temps_de_parole`
+-- Database: `Temps_de_parole`
 --
 
 -- --------------------------------------------------------
@@ -961,7 +961,8 @@ INSERT INTO `media` (`idMed`, `typeMed`, `rnomMed`, `public`, `temps_parole`, `a
 (698, 'tv', 'W9', 0, 37.07, 2016),
 (699, 'tv', 'W9', 0, 36.08, 2017),
 (700, 'tv', 'W9', 0, 35.12, 2018),
-(701, 'tv', 'W9', 0, 35.75, 2019);
+(701, 'tv', 'W9', 0, 35.75, 2019),
+(702, 'tv', 'Paris Premiere', 0, 27.16, 2011);
 
 -- --------------------------------------------------------
 
@@ -995,7 +996,10 @@ INSERT INTO `utilisateur` (`idUtilisateur`, `pseudo`, `mdp_u`, `mail_utilisateur
 (1, 'Robin', 'a', 'rr@rr.fr'),
 (2, 'R', 'r', 'r'),
 (3, 'Romane27', 'op', 'opop'),
-(4, 'Alphatrio', 'aqzsed', 'theodore.michelpicque@gmail.com');
+(4, 'Alphatrio', 'aqzsed', 'theodore.michelpicque@gmail.com'),
+(5, 'r', 'r', 'r'),
+(6, 'robin805', 'robin', 'robinbiagioni97@gmail.com'),
+(7, 'a', 'a', 'a');
 
 --
 -- Indexes for dumped tables
@@ -1081,10 +1085,16 @@ ALTER TABLE `commentaire`
   MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `idMed` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=703;
+
+--
 -- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

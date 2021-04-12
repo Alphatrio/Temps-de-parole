@@ -24,9 +24,7 @@
         enregistrer($_POST['pseudo'],$_POST['mdp1'],$_POST['mail']);
         $_SESSION['inscription']='oui';
         echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
-        
-        
-        
+
       }
     ?>
     <title>Registration</title>

@@ -13,7 +13,7 @@ http://www.trucsweb.com/tutoriels/javascript/tw85/
 */
 
       //essai pop up alternatif qui est bloqué par trop de navigateurs donc abandonné
-      
+
 // function popup() {
 //
 //     var url = encodeURI("message_popup.php");//url qui redirige vers la page
@@ -28,5 +28,5 @@ function popup1(c){
 }
 
 function popup_inscription(){
-  alert('Vous êtes desormais inscrits !');
+  alert('Vous êtes desormais inscrit !');
 }
