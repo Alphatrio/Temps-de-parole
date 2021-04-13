@@ -45,7 +45,7 @@
 
 
 
-	</div>
+	</div><br><br><br>
 
 	<?php require_once "./footer.php";?>
 	<?php require_once "./scriptsjs.php";?>
