@@ -4,7 +4,7 @@
 	<!-- Fixed Footer  -->
 	<footer id ="footer" class="bg-dark text-center text-white myfooter">
 
-	<script> // Pour faire en sorte que le footer tombe toujours en bas de page mais selon le scalling de l'os ça marche pas du coup rip 4h de ma vie
+	<!-- <script> // Pour faire en sorte que le footer tombe toujours en bas de page mais selon le scalling de l'os ça marche pas du coup rip 4h de ma vie
 
 		var end = $( "#endofpage" );
 		var position = end.position();
@@ -22,7 +22,7 @@
 				footer.css("width" ,"100%");
 			}
 		}
-	</script>
+	</script> -->
 
 
 	  <!-- Grid container -->
